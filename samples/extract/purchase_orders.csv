@@ -1,0 +1,16 @@
+PO Number,Vendor,PO Date,Currency,Line,Item Code,Description,Qty Ordered,Qty Received,Unit Price
+PO-IN-2041,Sahyadri Packaging Pvt Ltd,2026-09-24,INR,1,,Corrugated box 5-ply 18x12x10 in,500,500,38.5
+PO-IN-2041,Sahyadri Packaging Pvt Ltd,2026-09-24,INR,2,,BOPP tape 48mm x 65m brown,240,240,42
+PO-IN-2041,Sahyadri Packaging Pvt Ltd,2026-09-24,INR,3,,Stretch film 18 in 23 micron,60,60,315
+PO-IN-2047,Kaveri Electricals,2026-10-01,INR,1,,Modular switch 6A white,100,100,64
+PO-IN-2047,Kaveri Electricals,2026-10-01,INR,2,,FR PVC wire 1.5 sq mm 90 m coil,25,25,1460
+PO-IN-2047,Kaveri Electricals,2026-10-01,INR,3,,MCB 32A double pole,40,40,389
+PO-US-7781,Bayline Packaging Supply Inc.,2026-09-28,USD,1,CLM-1612,Clamshell container 6x6,40,40,31.8
+PO-US-7781,Bayline Packaging Supply Inc.,2026-09-28,USD,2,LID-0408,Deli lid 8oz clear,25,25,4.1
+PO-US-7781,Bayline Packaging Supply Inc.,2026-09-28,USD,3,BAG-1420,Kraft carry bag 14x20,60,50,12.9
+PO-UK-3310,Hartwell Fixings Ltd,2026-09-30,GBP,1,M8-50-ZP,Hex bolt M8 x 50 zinc,12,12,14.6
+PO-UK-3310,Hartwell Fixings Ltd,2026-09-30,GBP,2,WA-M8,Flat washer M8,6,6,9.25
+PO-UK-3310,Hartwell Fixings Ltd,2026-09-30,GBP,3,AN-M10-120,Through-bolt anchor M10 x 120,4,4,38.4
+PO-AU-5520,Southern Cross Office Co,2026-10-06,AUD,1,,A4 copy paper 80gsm carton,10,10,34.5
+PO-AU-5520,Southern Cross Office Co,2026-10-06,AUD,2,,Toner cartridge TN-2450,4,4,72
+PO-AU-5520,Southern Cross Office Co,2026-10-06,AUD,3,,Archive box with lid,30,30,3.9

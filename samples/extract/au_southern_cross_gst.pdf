@@ -1,0 +1,82 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 2484 >>
+stream
+BT 0 g /F2 18 Tf 1 0 0 1 40 800 Tm (TAX INVOICE) Tj ET
+BT 0 g /F2 12 Tf 1 0 0 1 40 778 Tm (Southern Cross Office Co Pty Ltd) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 40 765 Tm (ABN 00 417 226 318) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 40 753 Tm (Level 2, 15 Example Street, Gosford NSW 2250) Tj ET
+BT 0.35 g /F1 9 Tf 1 0 0 1 380 800 Tm (Invoice No.) Tj ET
+BT 0 g /F2 9 Tf 1 0 0 1 470 800 Tm (SC-58213) Tj ET
+BT 0.35 g /F1 9 Tf 1 0 0 1 380 786 Tm (Date) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 470 786 Tm (14/10/2026) Tj ET
+BT 0.35 g /F1 9 Tf 1 0 0 1 380 772 Tm (Terms) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 470 772 Tm (14 days) Tj ET
+BT 0.35 g /F1 9 Tf 1 0 0 1 380 758 Tm (Customer ref) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 470 758 Tm (Office supplies Oct) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 40 725 Tm (Bill to: Demo Logistics Pty Ltd, 9 Sample Parade, Testvale NSW 2000) Tj ET
+0.88 g 36 685 523 17 re f 0 g
+BT 0 g /F2 9 Tf 1 0 0 1 40 690 Tm (Description) Tj ET
+BT 0 g /F2 9 Tf 1 0 0 1 315.44 690 Tm (Qty) Tj ET
+BT 0 g /F2 9 Tf 1 0 0 1 359.43 690 Tm (Unit Price) Tj ET
+BT 0 g /F2 9 Tf 1 0 0 1 450.76 690 Tm (GST) Tj ET
+BT 0 g /F2 9 Tf 1 0 0 1 522.75 690 Tm (Amount) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 40 668 Tm (A4 copy paper 80gsm, carton of 5 reams) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 319.99 668 Tm (10) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 377.48 668 Tm (34.50) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 447.48 668 Tm (34.50) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 527.48 668 Tm (345.00) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 40 652 Tm (Toner cartridge TN-2450 compatible) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 325 652 Tm (4) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 377.48 652 Tm (72.00) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 447.48 652 Tm (28.80) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 527.48 652 Tm (288.00) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 40 636 Tm (Archive box with lid) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 319.99 636 Tm (30) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 382.49 636 Tm (3.90) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 447.48 636 Tm (11.70) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 527.48 636 Tm (117.00) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 380 606 Tm (Subtotal \(ex GST\)) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 527.48 606 Tm (750.00) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 380 591 Tm (GST 10%) Tj ET
+BT 0 g /F1 9 Tf 1 0 0 1 532.48 591 Tm (75.00) Tj ET
+BT 0 g /F2 9 Tf 1 0 0 1 380 574 Tm (TOTAL AUD \(inc GST\)) Tj ET
+BT 0 g /F2 9 Tf 1 0 0 1 526.38 574 Tm (825.00) Tj ET
+BT 0 g /F1 8 Tf 1 0 0 1 40 150 Tm (Payment by EFT within 14 days. BSB 000-000, Account 00000000 \(dummy\).) Tj ET
+BT 0.4 g /F1 7 Tf 1 0 0 1 40 60 Tm (Synthetic sample data for a demo.) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Title (Invoice SC-58213) /Producer (synthetic sample generator) /CreationDate (D:20261026000000Z) >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000002856 00000 n 
+0000002992 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R /Info 7 0 R >>
+startxref
+3112
+%%EOF

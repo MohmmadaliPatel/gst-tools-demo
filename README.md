@@ -10,7 +10,9 @@ A fully static site with working, in-browser demos (two GST tools and three quic
 | `quote.html` | **Quotation & proforma builder.** Rate-card presets (per-kg pipes/tubes, FOB export cost sheet with CBM/container fill, per-word translation; `?type=steel|export|translation`), discount, CGST/SGST vs IGST by state, freight, round-off, amount in words (lakh/crore), FY quote numbering, print/PDF, and a quote register with follow-up queue (browser local storage only). |
 | `stock.html` | **Stock tracker & channel reconciliation.** SKU master + IN/OUT/RETURN/DAMAGED/ADJUST movements → available stock by SKU/size/colour, low/negative stock, unknown-SKU warnings, Shopify/marketplace inventory comparison (oversell risk), size×colour grid, daily Excel report. |
 | `renewals.html` | **Renewals & fee reminder board.** Member/student CSV (DD-MM-YYYY ok) → expired / due soon / low sessions / fee pending, editable message templates with placeholders, copy-to-clipboard, reminder list CSV. Sends nothing. |
+| `extract.html` | **Invoice & PO extractor.** Reads supplier invoice PDFs (Indian GST, US sales tax, UK VAT, AU GST) in the browser with the vendored pdf.js: vendor, invoice no., dates, PO no., currency, tax and line items, each with a confidence score; checks totals, tax and duplicates; matches against a purchase-order CSV (price, quantity, missing PO); exports bills for QuickBooks Online, Xero, QuickBooks Desktop (IIF), Tally and Zoho Books. Sample PDFs in `samples/extract/` (regenerate with `node scripts/make-extract-samples.mjs`). Sends nothing. |
 
+**Third-party code:** `vendor/pdfjs/` is Mozilla pdf.js 4.10.38, unmodified, under the Apache License 2.0 (`vendor/pdfjs/LICENSE`). Everything else is original to this repo.
 **Privacy:** there's no backend, API keys, analytics or external requests. Every file is processed in the browser, and the smoke test fails if the page makes any non-local request.
 **Data:** all sample files in `samples/` are synthetic, with fictional names and checksum-valid but made-up GSTINs (regenerate with `npm run samples`). The formats follow public GSTN (GSTR-2B JSON) and NIC (e-invoice schema v1.1) specs.
 
@@ -45,6 +47,8 @@ js/csv.js        CSV parse/export + Excel (SpreadsheetML) writer
 js/quote.js      quotation maths, amount in words, FY numbering, follow-ups (pure)
 js/stock.js      stock ledger + channel reconciliation (pure)
 js/renewals.js   renewal/fee classification + message templates (pure)
+js/extract*.js   invoice/PO extraction, checks, PO matching and accounting exports
+vendor/pdfjs/    third-party: Mozilla pdf.js 4.10.38 (unmodified build), Apache-2.0, see vendor/pdfjs/LICENSE
 js/*-ui.js       page wiring
 samples/         synthetic GSTR-2B JSON, purchase register CSV, e-invoice CSV, stock and member CSVs
 tests/           node:test unit tests

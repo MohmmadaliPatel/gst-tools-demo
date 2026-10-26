@@ -18,11 +18,12 @@ const expected = {
   'recon.html': { amt: pkgA.price, usd: pkgA.price_usd, time: pkgA.timeline },
   'einvoice.html': { amt: pkgA.price, usd: pkgA.price_usd, time: pkgA.timeline },
   'tds.html': { amt: ct['tds.html'].from, usd: ct['tds.html'].usd, time: ct['tds.html'].timeline },
+  'extract.html': { amt: ct['extract.html'].from, usd: ct['extract.html'].usd, time: ct['extract.html'].timeline },
 };
 const ctaOf = (html) => { const m = html.match(/<aside class="cta" id="cta"[\s\S]*?<\/aside>/g); return m || []; };
 
 test('every demo page has exactly one CTA box with the shared heading, reply line and no contact details', () => {
-  for (const f of DEMOS) {
+  for (const f of [...DEMOS, 'tds.html', 'extract.html']) {
     const html = read(f), boxes = ctaOf(html);
     assert.equal(boxes.length, 1, `${f}: one .cta box`);
     const box = boxes[0];
@@ -43,6 +44,10 @@ test('CTA prices and timelines match profile.json (single source used on the lan
   const t = ct['tds.html'], tds = ctaOf(read('tds.html'))[0];
   assert.ok(tds.includes(`+ ${t.annual.replace('/yr', '')} / ${t.annual_usd.replace('/yr', '')} per year`), 'tds: yearly fee matches profile.json');
   assert.ok(read('tds.html').includes(`+ ${t.annual} updates`), 'tds: intro line shows the yearly fee');
+  const x = ct['extract.html'];
+  assert.ok(ctaOf(read('extract.html'))[0].includes(`With live QuickBooks/Xero/Tally push: ${x.live_push} / ${x.live_push_usd}`), 'extract: live-push price matches profile.json');
+  assert.ok(read('extract.html').includes(`${x.timeline} · live QuickBooks/Xero/Tally push ${x.live_push}`), 'extract: intro line shows the live-push price');
+  assert.ok(read('index.html').includes(`from ${x.from} / ${x.usd} · ${x.timeline}`), 'extract: landing card price matches profile.json');
   const b = profile.services.find((s) => s.id === 'B');
   assert.ok(ctaOf(read('einvoice.html'))[0].includes(`${b.price} / ${b.price_usd}, ${b.timeline} (Package B)`), 'einvoice: live IRN option matches package B');
 });
@@ -59,7 +64,7 @@ test('404 page exists, uses site styling and links to the home page and every de
   assert.match(html, /<link rel="stylesheet" href="css\/style.css">/);
   assert.match(html, /<meta name="robots" content="noindex">/);
   assert.match(html, /<base href=/, 'resolves links from the site root at any depth');
-  for (const p of ['index.html', ...DEMOS, 'tds.html']) assert.ok(html.includes(`href="${p}"`), `404 links to ${p}`);
+  for (const p of ['index.html', ...DEMOS, 'tds.html', 'extract.html']) assert.ok(html.includes(`href="${p}"`), `404 links to ${p}`);
   assert.doesNotMatch(html, /@[a-z0-9-]+\.[a-z]|github\.com|mailto:/i);
 });
 

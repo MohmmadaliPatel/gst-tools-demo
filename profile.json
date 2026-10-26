@@ -172,6 +172,17 @@
       "timeline": "7-10 days",
       "demo": "tds.html",
       "desc": "Form 26AS or Form 168 Part I against your clients' books TDS receivable: matched by TAN, quarter, section and amount, with credit at risk per deductor, follow-up notes and an Excel export. The yearly fee covers section-393 table and format updates."
+    },
+    {
+      "id": "X1",
+      "name": "Invoice & PO extractor: PDF to reviewed bills",
+      "from": "₹20,000",
+      "usd": "$400",
+      "live_push": "₹35,000",
+      "live_push_usd": "$700",
+      "timeline": "10-14 days",
+      "demo": "extract.html",
+      "desc": "Supplier invoice or PO PDFs (one document family) read into vendor, invoice number, dates, PO number, tax and line items with a confidence score per field, checked for totals, tax and duplicates, matched against open purchase orders, and exported as a bills file for QuickBooks Online, Xero, QuickBooks Desktop, Tally or Zoho Books. The live-push option creates draft bills in QuickBooks Online or Xero, or vouchers in Tally, for approval."
     }
   ]
 }

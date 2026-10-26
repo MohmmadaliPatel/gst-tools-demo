@@ -128,7 +128,7 @@ test('missing paths return 404 with the styled page and working links, even when
     assert.match(await page.textContent('h1'), /doesn't exist/);
     assert.equal(await page.$eval('body', (b) => getComputedStyle(b).backgroundColor), 'rgb(246, 248, 251)', 'site CSS applied');
     const hrefs = await page.$$eval('main a', (as) => as.map((a) => a.href));
-    for (const p of ['quote.html', 'stock.html', 'renewals.html', 'recon.html', 'einvoice.html', 'tds.html', 'index.html']) assert.ok(hrefs.includes(base + p), `${path}: links to ${p}`);
+    for (const p of ['quote.html', 'stock.html', 'renewals.html', 'recon.html', 'einvoice.html', 'tds.html', 'extract.html', 'index.html']) assert.ok(hrefs.includes(base + p), `${path}: links to ${p}`);
     assert.deepEqual(external, []);
     await page.close();
   }
@@ -136,7 +136,7 @@ test('missing paths return 404 with the styled page and working links, even when
 
 test('every existing URL still returns 200', { skip }, async () => {
   const urls = ['', 'index.html', 'recon.html', 'einvoice.html', 'quote.html', 'quote.html?type=steel', 'quote.html?type=export', 'quote.html?type=translation',
-    'stock.html', 'renewals.html', 'profile.json', 'css/style.css', 'samples/gstr2b_sample.json', 'samples/purchase_register.csv', 'samples/einvoice_rows.csv',
+    'stock.html', 'renewals.html', 'tds.html', 'extract.html', 'profile.json', 'css/style.css', 'css/extract.css', 'vendor/pdfjs/pdf.min.mjs', 'vendor/pdfjs/pdf.worker.min.mjs', 'samples/extract/purchase_orders.csv', 'samples/extract/in_sahyadri_gst_cgst_sgst.pdf', 'samples/extract/us_bayline_sales_tax.pdf', 'samples/gstr2b_sample.json', 'samples/purchase_register.csv', 'samples/einvoice_rows.csv',
     'samples/stock_master.csv', 'samples/stock_movements.csv', 'samples/shopify_inventory.csv', 'samples/members.csv'];
   for (const u of urls) { const r = await fetch(base + u); assert.equal(r.status, 200, u); }
 });
@@ -164,10 +164,12 @@ test('stock and renewals use the visitor\'s date and the sample story is unchang
 });
 
 test('no page-wide horizontal scroll at 320, 375, 768 and 1360 px (quote presets and every page)', { skip }, async () => {
-  const pages = ['index.html', 'quote.html', 'quote.html?type=steel', 'quote.html?type=export', 'quote.html?type=translation', 'recon.html', 'einvoice.html', 'stock.html', 'renewals.html', 'tds.html', '404.html'];
+  const pages = ['index.html', 'quote.html', 'quote.html?type=steel', 'quote.html?type=export', 'quote.html?type=translation', 'recon.html', 'einvoice.html', 'stock.html', 'renewals.html', 'tds.html', 'extract.html', '404.html'];
   for (const w of [320, 375, 768, 1360]) for (const p of pages) {
     const { page } = await open(p, w);
     await page.waitForLoadState('load'); await page.waitForTimeout(250);
+    // extract.html parses its sample PDFs asynchronously: wait until the queue and the first page are rendered
+    if (p === 'extract.html') await page.waitForFunction(() => document.body.dataset.ready === '6' && document.body.dataset.rendered, null, { timeout: 15000 });
     const sw = await page.evaluate(() => document.documentElement.scrollWidth);
     assert.ok(sw <= w, `${p} at ${w}px: page is ${sw}px wide`);
     await page.close();

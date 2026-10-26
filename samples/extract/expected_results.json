@@ -1,0 +1,325 @@
+{
+  "note": "Ground truth for the synthetic sample invoices (written by scripts/make-extract-samples.mjs). Dates ISO, amounts in invoice currency.",
+  "invoices": [
+    {
+      "file": "in_sahyadri_gst_cgst_sgst.pdf",
+      "country": "IN",
+      "vendor": "Sahyadri Packaging Pvt Ltd",
+      "vendorTaxId": "27AAKCS7310R1ZO",
+      "buyerTaxId": "27AAECD0001K1Z5",
+      "invoiceNo": "SPP/26-27/0412",
+      "invoiceDate": "2026-10-03",
+      "dueDate": "2026-11-02",
+      "poNo": "PO-IN-2041",
+      "currency": "INR",
+      "subtotal": 48230,
+      "taxes": {
+        "cgst": 4340.7,
+        "sgst": 4340.7
+      },
+      "taxTotal": 8681.4,
+      "freight": 0,
+      "roundOff": -0.4,
+      "total": 56911,
+      "lines": [
+        {
+          "code": "",
+          "description": "Corrugated box 5-ply 18x12x10 in",
+          "hsn": "4819",
+          "qty": 500,
+          "rate": 38.5,
+          "amount": 19250
+        },
+        {
+          "code": "",
+          "description": "BOPP tape 48mm x 65m brown",
+          "hsn": "3919",
+          "qty": 240,
+          "rate": 42,
+          "amount": 10080
+        },
+        {
+          "code": "",
+          "description": "Stretch film 18 in 23 micron",
+          "hsn": "3920",
+          "qty": 60,
+          "rate": 315,
+          "amount": 18900
+        }
+      ]
+    },
+    {
+      "file": "in_kaveri_gst_igst.pdf",
+      "country": "IN",
+      "vendor": "Kaveri Electricals",
+      "vendorTaxId": "29AAPFK2468M1ZI",
+      "buyerTaxId": "27AAECD0001K1Z5",
+      "invoiceNo": "KE-2026-1187",
+      "invoiceDate": "2026-10-12",
+      "dueDate": "2026-11-11",
+      "poNo": "PO-IN-2047",
+      "currency": "INR",
+      "subtotal": 59740,
+      "taxes": {
+        "igst": 10753.2
+      },
+      "taxTotal": 10753.2,
+      "freight": 0,
+      "roundOff": -0.2,
+      "total": 70493,
+      "lines": [
+        {
+          "code": "",
+          "description": "Modular switch 6A white",
+          "hsn": "85365090",
+          "qty": 120,
+          "rate": 64,
+          "amount": 7680
+        },
+        {
+          "code": "",
+          "description": "FR PVC wire 1.5 sq mm 90 m coil",
+          "hsn": "85444999",
+          "qty": 25,
+          "rate": 1460,
+          "amount": 36500
+        },
+        {
+          "code": "",
+          "description": "MCB 32A double pole",
+          "hsn": "85362030",
+          "qty": 40,
+          "rate": 389,
+          "amount": 15560
+        }
+      ]
+    },
+    {
+      "file": "us_bayline_sales_tax.pdf",
+      "country": "US",
+      "vendor": "Bayline Packaging Supply Inc.",
+      "vendorTaxId": "",
+      "buyerTaxId": "",
+      "invoiceNo": "104377",
+      "invoiceDate": "2026-10-05",
+      "dueDate": "2026-11-04",
+      "poNo": "PO-US-7781",
+      "currency": "USD",
+      "subtotal": 2154.75,
+      "taxes": {
+        "salesTax": 0
+      },
+      "taxTotal": 0,
+      "freight": 85,
+      "roundOff": 0,
+      "total": 2239.75,
+      "lines": [
+        {
+          "code": "CLM-1612",
+          "description": "Clamshell container 6 x 6 in, case of 250",
+          "hsn": "",
+          "qty": 40,
+          "rate": 31.8,
+          "amount": 1272
+        },
+        {
+          "code": "LID-0408",
+          "description": "Deli lid 8 oz clear, case of 500",
+          "hsn": "",
+          "qty": 25,
+          "rate": 4.35,
+          "amount": 108.75
+        },
+        {
+          "code": "BAG-1420",
+          "description": "Kraft carry bag 14 x 20, bundle of 100",
+          "hsn": "",
+          "qty": 60,
+          "rate": 12.9,
+          "amount": 774
+        }
+      ]
+    },
+    {
+      "file": "uk_hartwell_vat.pdf",
+      "country": "GB",
+      "vendor": "Hartwell Fixings Ltd",
+      "vendorTaxId": "GB 000 4417 21",
+      "buyerTaxId": "",
+      "invoiceNo": "HF-30918",
+      "invoiceDate": "2026-10-07",
+      "dueDate": "2026-11-06",
+      "poNo": "PO-UK-3310",
+      "currency": "GBP",
+      "subtotal": 384.3,
+      "taxes": {
+        "vat": 76.86
+      },
+      "taxTotal": 76.86,
+      "freight": 0,
+      "roundOff": 0,
+      "total": 461.16,
+      "lines": [
+        {
+          "code": "M8-50-ZP",
+          "description": "Hex bolt M8 x 50 zinc, box of 100",
+          "hsn": "",
+          "qty": 12,
+          "rate": 14.6,
+          "amount": 175.2
+        },
+        {
+          "code": "WA-M8",
+          "description": "Flat washer M8, box of 500",
+          "hsn": "",
+          "qty": 6,
+          "rate": 9.25,
+          "amount": 55.5
+        },
+        {
+          "code": "AN-M10-120",
+          "description": "Through-bolt anchor M10 x 120, box of 50",
+          "hsn": "",
+          "qty": 4,
+          "rate": 38.4,
+          "amount": 153.6
+        }
+      ]
+    },
+    {
+      "file": "au_southern_cross_gst.pdf",
+      "country": "AU",
+      "vendor": "Southern Cross Office Co Pty Ltd",
+      "vendorTaxId": "00 417 226 318",
+      "buyerTaxId": "",
+      "invoiceNo": "SC-58213",
+      "invoiceDate": "2026-10-14",
+      "dueDate": "2026-10-28",
+      "poNo": "",
+      "currency": "AUD",
+      "subtotal": 750,
+      "taxes": {
+        "gst": 75
+      },
+      "taxTotal": 75,
+      "freight": 0,
+      "roundOff": 0,
+      "total": 825,
+      "lines": [
+        {
+          "code": "",
+          "description": "A4 copy paper 80gsm, carton of 5 reams",
+          "hsn": "",
+          "qty": 10,
+          "rate": 34.5,
+          "amount": 345
+        },
+        {
+          "code": "",
+          "description": "Toner cartridge TN-2450 compatible",
+          "hsn": "",
+          "qty": 4,
+          "rate": 72,
+          "amount": 288
+        },
+        {
+          "code": "",
+          "description": "Archive box with lid",
+          "hsn": "",
+          "qty": 30,
+          "rate": 3.9,
+          "amount": 117
+        }
+      ]
+    },
+    {
+      "file": "us_bayline_resent_copy.pdf",
+      "country": "US",
+      "vendor": "Bayline Packaging Supply Inc.",
+      "vendorTaxId": "",
+      "buyerTaxId": "",
+      "invoiceNo": "104377",
+      "invoiceDate": "2026-10-05",
+      "dueDate": "2026-11-04",
+      "poNo": "PO-US-7781",
+      "currency": "USD",
+      "subtotal": 2154.75,
+      "taxes": {
+        "salesTax": 0
+      },
+      "taxTotal": 0,
+      "freight": 85,
+      "roundOff": 0,
+      "total": 2239.75,
+      "lines": [
+        {
+          "code": "CLM-1612",
+          "description": "Clamshell container 6 x 6 in, case of 250",
+          "hsn": "",
+          "qty": 40,
+          "rate": 31.8,
+          "amount": 1272
+        },
+        {
+          "code": "LID-0408",
+          "description": "Deli lid 8 oz clear, case of 500",
+          "hsn": "",
+          "qty": 25,
+          "rate": 4.35,
+          "amount": 108.75
+        },
+        {
+          "code": "BAG-1420",
+          "description": "Kraft carry bag 14 x 20, bundle of 100",
+          "hsn": "",
+          "qty": 60,
+          "rate": 12.9,
+          "amount": 774
+        }
+      ]
+    }
+  ],
+  "poMatch": {
+    "in_sahyadri_gst_cgst_sgst.pdf": {
+      "status": "matched",
+      "flags": []
+    },
+    "in_kaveri_gst_igst.pdf": {
+      "status": "mismatch",
+      "flags": [
+        "qty_over_po"
+      ]
+    },
+    "us_bayline_sales_tax.pdf": {
+      "status": "mismatch",
+      "flags": [
+        "price_diff",
+        "qty_over_received"
+      ]
+    },
+    "uk_hartwell_vat.pdf": {
+      "status": "matched",
+      "flags": []
+    },
+    "au_southern_cross_gst.pdf": {
+      "status": "missing_po",
+      "flags": [
+        "missing_po"
+      ],
+      "suggestedPo": "PO-AU-5520"
+    },
+    "us_bayline_resent_copy.pdf": {
+      "status": "mismatch",
+      "flags": [
+        "price_diff",
+        "qty_over_received"
+      ]
+    }
+  },
+  "duplicates": [
+    [
+      "us_bayline_sales_tax.pdf",
+      "us_bayline_resent_copy.pdf"
+    ]
+  ]
+}

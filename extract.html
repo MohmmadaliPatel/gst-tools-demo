@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Invoice &amp; PO PDF Extractor: review, PO match, accounting export</title>
+<meta name="description" content="Pull vendor, dates, tax, totals and line items out of supplier invoice PDFs, check them against your purchase orders and export bills for QuickBooks, Xero, Tally or Zoho Books. Runs in your browser.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/extract.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">Mohmmadali <span>· GST &amp; Tax Software</span></a>
+  <nav><a href="index.html">Home</a><a href="recon.html" class="hide-sm">Reconciliation</a><a href="tds.html" class="hide-sm">TDS check</a><a href="extract.html" class="active">Invoice extractor</a><a href="einvoice.html" class="hide-sm">E-invoice</a><a href="quote.html" class="hide-sm">Quotes</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="tool-head">
+    <h1>Invoice &amp; PO extractor: PDF to reviewed bills</h1>
+    <p>Drop supplier invoice PDFs. Vendor, invoice number, dates, PO number, tax and line items are pulled out with a confidence score for each field. Fix anything that is off, check each bill against your purchase orders, and download a bills file for QuickBooks Online, Xero, QuickBooks Desktop, Tally or Zoho Books.</p>
+    <p class="cta-mini">Want it for your business? <b>Fixed price from ₹20,000</b> · 10-14 days · live QuickBooks/Xero/Tally push ₹35,000 · <a href="#cta">How to get it built ↓</a></p>
+  </div>
+  <div class="privacy" id="privacy" style="margin:10px 0 16px">🔒 <div><b>Files never leave this tab.</b> PDFs are read with a copy of pdf.js served from this site; there is no server, no upload and no AI service. After the page has loaded, picking files makes no network request at all. Only your export settings are saved, in this browser. The bundled samples are made-up invoices from fictional suppliers.</div></div>
+
+  <ol class="ex-steps" aria-label="Steps">
+    <li><a href="#s-load">Load</a></li><li><a href="#s-queue">Queue</a></li><li><a href="#s-review">Review</a></li><li><a href="#s-po">PO match</a></li><li><a href="#s-export">Export</a></li>
+  </ol>
+
+  <section class="panel" id="s-load" aria-labelledby="h-load">
+    <h2 id="h-load">1. Load invoices and purchase orders</h2>
+    <div class="grid g2">
+      <div>
+        <label for="fpdf">Supplier invoices (PDF, several at once)</label>
+        <div class="drop" id="dpdf">No invoices loaded</div>
+        <input type="file" id="fpdf" accept=".pdf,application/pdf" multiple style="margin-top:6px">
+        <p class="note" style="margin:4px 0 0">Text PDFs from billing software (Tally, Zoho, QuickBooks, Xero, SAP and so on). Scanned images have no text layer: they are flagged, not guessed.</p>
+      </div>
+      <div>
+        <label for="fpo">Optional: open purchase orders (CSV, one row per PO line)</label>
+        <div class="drop" id="dpo">No PO file (PO match is skipped)</div>
+        <input type="file" id="fpo" accept=".csv,text/csv" style="margin-top:6px">
+        <p class="note" style="margin:4px 0 0">Columns: PO Number, Vendor, Currency, Item Code, Description, Qty Ordered, Qty Received (for a 3-way check), Unit Price. Header names are matched loosely.</p>
+      </div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="sample">Use sample invoices</button>
+      <button class="btn sm" id="clear">Clear all data</button>
+      <a class="btn sm" href="samples/extract/purchase_orders.csv" download>Sample PO CSV</a>
+      <a class="btn sm" href="samples/extract/in_sahyadri_gst_cgst_sgst.pdf" download>Sample GST invoice PDF</a>
+      <a class="btn sm" href="samples/extract/us_bayline_sales_tax.pdf" download>Sample US invoice PDF</a>
+    </div>
+    <p class="note" id="loadmsg" role="status" aria-live="polite"></p>
+  </section>
+
+  <div id="out" hidden>
+    <section class="panel" id="s-queue" aria-labelledby="h-queue">
+      <h2 id="h-queue">2. Queue</h2>
+      <div class="kpis" id="kpis"></div>
+      <div class="tbl-wrap" style="margin-top:14px"><table id="qtbl"></table></div>
+      <p class="note">Confidence is the lowest score among the fields an import needs (vendor, invoice no., dates, total). Arithmetic that agrees (lines = subtotal, subtotal + tax = total) raises it.</p>
+    </section>
+
+    <section class="panel" id="s-review" aria-labelledby="h-review">
+      <h2 id="h-review">3. Review and correct</h2>
+      <div class="row ex-docbar"><label for="docsel" class="sr">Invoice</label><select id="docsel"></select><button class="btn sm" id="prev">◀ Prev</button><button class="btn sm" id="next">Next ▶</button><span id="revstate"></span></div>
+      <div class="ex-review">
+        <div class="ex-viewer">
+          <div class="row ex-pagebar"><button class="btn sm" id="pgprev" aria-label="Previous page">◀</button><span id="pginfo">Page 1</span><button class="btn sm" id="pgnext" aria-label="Next page">▶</button><span class="ex-legend"><i class="c-hi"></i>high <i class="c-med"></i>check <i class="c-lo"></i>low</span></div>
+          <div class="ex-page" id="page"><canvas id="cv"></canvas><div class="ex-boxes" id="boxes"></div></div>
+        </div>
+        <div class="ex-form">
+          <div class="ex-fields" id="fields"></div>
+          <h3>Line items</h3>
+          <div class="tbl-wrap"><table id="ltbl" class="ex-lines"></table></div>
+          <div class="row" style="margin-top:8px"><button class="btn sm" id="addline">+ Add line</button><button class="btn sm" id="fixamt">Amount = qty × rate</button></div>
+          <h3>Checks</h3>
+          <ul class="msgs" id="checks"></ul>
+          <div class="row" style="margin-top:10px"><button class="btn primary" id="markrev">✓ Mark reviewed</button><button class="btn sm" id="reset">Undo my edits</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="s-po" aria-labelledby="h-po">
+      <h2 id="h-po">4. Match against purchase orders</h2>
+      <div class="fields ex-tol"><div><label for="ptol">Price tolerance (%)</label><input id="ptol" type="number" min="0" step="0.5" value="0"></div><div><label for="qtol">Quantity tolerance (units)</label><input id="qtol" type="number" min="0" step="1" value="0"></div></div>
+      <div id="po" class="ex-po"></div>
+    </section>
+
+    <section class="panel" id="s-export" aria-labelledby="h-export">
+      <h2 id="h-export">5. Export bills</h2>
+      <div class="fields">
+        <div><label for="target">Accounting software</label><select id="target"></select></div>
+        <div><label for="expacc">Expense / purchase account</label><input id="expacc"></div>
+        <div><label for="apacc">Accounts payable (QuickBooks Desktop)</label><input id="apacc"></div>
+        <div><label for="xacc">Xero account code</label><input id="xacc"></div>
+        <div><label for="xdate">Date format (Xero / QBO)</label><select id="xdate"><option value="DMY">DD/MM/YYYY</option><option value="MDY">MM/DD/YYYY (US companies)</option></select></div>
+      </div>
+      <label class="inline" style="margin-top:10px"><input type="checkbox" id="incl"> Include bills with errors, duplicates or PO problems</label>
+      <div class="row" style="margin-top:12px"><button class="btn primary" id="dl">⬇ Download</button><span class="note" id="dlinfo"></span></div>
+      <ul class="msgs" id="xwarn" style="margin-top:10px"></ul>
+      <p class="note" style="margin:10px 0 4px">Columns: <span class="ok-k">verified</span> = name taken from the software's own help article; <span class="tp-k">third-party</span> = from a published copy of the template (the official page needs a login); <span class="unv-k">unverified</span> = check against your own download of the import template before the first import.</p>
+      <div id="xcols" class="ex-cols"></div>
+      <p class="note" id="xhid" style="margin:10px 0 4px"></p>
+      <div class="tbl-wrap"><table id="xtbl"></table></div>
+      <p class="note">Tax codes and account names must match the lists in your own company file. Live posting to QuickBooks Online or Xero (no CSV step) is a paid upgrade, not part of this demo.</p>
+    </section>
+  </div>
+  <p class="note">This demo reads text PDFs with layout rules, not AI: labels near values, table columns and the arithmetic between them. It shows the approach on six made-up invoices. A real build is tuned on your own supplier PDFs. Not tax advice.</p>
+  <aside class="cta" id="cta" aria-labelledby="cta-h">
+    <div>
+      <h2 id="cta-h">Want this for your business?</h2>
+      <p>This extractor tuned to one document family you receive (your suppliers' invoices or POs), with exports for the accounting software you use, tested against 20 of your own anonymised PDFs. Fixed quote paid in 2 milestones; source, README and tests handed over.</p>
+      <p>Upgrade: <b>live push to QuickBooks Online, Xero or Tally</b> (QuickBooks and Xero through their official APIs, Tally through its XML/HTTP interface): draft bills or vouchers created for approval, no CSV step, <span class="nowrap">₹35,000 / $700</span>.</p>
+      <p class="cta-how"><b>Reply to the email that brought you here</b> with two lines about your workflow and 3 sample PDFs with dummy data. You get a written fixed quote before any work starts. <a class="more" href="index.html#services">See all packages</a></p>
+    </div>
+    <div class="cta-price"><span class="note">Invoice / PO extractor · one document family + CSV exports</span><span class="amt"><small>from</small> ₹20,000 <small>/ $400</small></span><span class="time">10-14 days · fixed price</span><span class="alt">With live QuickBooks/Xero/Tally push: ₹35,000 / $700</span></div>
+  </aside>
+</main>
+<footer><div class="wrap">Runs 100% in your browser · Made-up sample invoices · Not affiliated with Intuit, Xero, Tally Solutions or Zoho · <a href="index.html">Back to services</a></div></footer>
+<script type="module" src="js/extract-ui.js"></script>
+</body>
+</html>
