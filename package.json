@@ -1,0 +1,14 @@
+{
+  "name": "gst-compliance-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static, in-browser GST tools: GSTR-2B reconciliation and IRP e-invoice JSON builder/validator (portfolio demo).",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/",
+    "samples": "node scripts/make-samples.mjs",
+    "serve": "python3 -m http.server 8080",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "license": "MIT"
+}

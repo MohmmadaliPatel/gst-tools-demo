@@ -1,0 +1,135 @@
+{
+  "_comment": "Single editable source for the landing page. Do not name employers or clients, and do not link code repositories. Any text in [square brackets] renders as a highlighted placeholder, so the published file must contain none.",
+  "name": "Mohmmadali",
+  "title": "Freelance developer for GST, TDS and Income-tax compliance software",
+  "location": "India (IST)",
+  "availability": "Taking fixed-price projects",
+  "tagline": "I build tax-form, e-filing and GST automation software, and I take small, fixed-scope jobs for CA firms and accounting/billing SaaS teams.",
+  "headline_capability": "Automation for the Income Tax e-filing, TRACES and GST portals: bulk downloads, data extraction, status tracking and reconciliation workflows for CA firms.",
+  "about": [
+    "I build tax-form and e-filing software professionally, so I know the details that break compliance code: schema versions, rounding rules, duplicate submissions and yearly rule changes.",
+    "Most of my work is automation around Indian tax portals (Income Tax e-filing, TRACES and GST): pulling documents and statuses in bulk, extracting data from PDFs and Excel files, and turning it into reconciled, reviewable reports for CA teams.",
+    "I take a small number of fixed-scope projects at a time, so each one gets careful, tested work and a clean handover."
+  ],
+  "work_types": [
+    "Income Tax e-filing, TRACES and GST portal automation (bulk downloads, status tracking, data extraction)",
+    "TDS computation and tax-rules engines",
+    "GST reconciliation (GSTR-2B vs books) and e-invoice / e-way bill JSON",
+    "Accounting-software integrations and data migration",
+    "PDF redaction, invoice data extraction and document workflows",
+    "Email-driven workflows on Microsoft 365 (receivables follow-up, reminders, tracking)"
+  ],
+  "strengths": [
+    "Compliance-grade correctness: decimal-safe rounding, schema validation, golden tests",
+    "Bulk, resumable automation jobs with queues, retries and audit logs",
+    "Excel, CSV and PDF in and out, in the formats CA teams already use",
+    "Clean handover: README, tests and a short how-to-update guide"
+  ],
+  "stack": {
+    "Languages": [
+      "TypeScript",
+      "JavaScript",
+      "Python"
+    ],
+    "Frontend": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Ant Design",
+      "Radix UI"
+    ],
+    "Backend": [
+      "Node.js",
+      "NestJS",
+      "GraphQL",
+      "Blitz.js",
+      "Express"
+    ],
+    "Data": [
+      "Prisma",
+      "TypeORM",
+      "MySQL",
+      "PostgreSQL",
+      "SQLite",
+      "MongoDB"
+    ],
+    "Integrations and tools": [
+      "Microsoft Graph / MSAL",
+      "Puppeteer",
+      "ExcelJS / SheetJS",
+      "PDF processing (qpdf, signing)"
+    ]
+  },
+  "services": [
+    {
+      "id": "A",
+      "name": "Form Generator",
+      "price": "₹30,000",
+      "price_usd": "$350",
+      "timeline": "5-7 days",
+      "desc": "One tax form or document: CSV/JSON/Excel in, filled PDF or schema-valid XML/JSON out (e.g. GST e-invoice JSON, ITR/TDS utility JSON). Includes schema validation, 10 golden test cases, a CLI or endpoint, and a README."
+    },
+    {
+      "id": "B",
+      "name": "Connector",
+      "price": "₹55,000",
+      "price_usd": "$650",
+      "timeline": "2 weeks",
+      "desc": "One compliance or accounting API, sandbox to production: GST IRN/e-way bill via your GSP, Tally, Zoho Books, Xero or QuickBooks. Auth and token refresh, idempotent submits, status polling, error mapping and a sync log."
+    },
+    {
+      "id": "C",
+      "name": "Rules Engine",
+      "price": "₹1,00,000",
+      "price_usd": "$1,200",
+      "timeline": "3-4 weeks",
+      "desc": "One tax calculation module (e.g. TDS) as versioned config with decimal-safe rounding, a calculation API, a worked-example report per case, 25+ golden tests and a how-to-update-next-year guide."
+    },
+    {
+      "id": "D",
+      "name": "Portal Automation",
+      "price": "Quoted per portal",
+      "price_usd": "",
+      "timeline": "After a short scoping call",
+      "desc": "Automation for the Income Tax e-filing, TRACES and GST portals for CA firms: bulk downloads of returns, forms and notices, status tracking across many clients, data extraction into Excel, and reconciliation workflows. Runs on your machine or server, and you keep control of credentials."
+    }
+  ],
+  "selected_work": [
+    {
+      "title": "Income Tax and GST portal automation tools",
+      "desc": "Tools that automate bulk downloads, status checks and data extraction from the Income Tax e-filing and GST portals across many taxpayers, with job queues, retries and Excel/PDF output for CA teams.",
+      "tags": [
+        "TypeScript",
+        "Next.js",
+        "Puppeteer",
+        "Queues"
+      ]
+    },
+    {
+      "title": "TDS computation and compliance tooling",
+      "desc": "Rules-driven TDS calculation with section-wise rates, thresholds and decimal-safe rounding, plus reports that show the working for each case.",
+      "tags": [
+        "TypeScript",
+        "NestJS"
+      ]
+    },
+    {
+      "title": "Receivables tracking app",
+      "desc": "A web app that tracks outstanding receivables and follow-ups: syncs email on Microsoft 365, sends reminders, logs every action, and gives each role its own view.",
+      "tags": [
+        "Next.js",
+        "Microsoft Graph",
+        "Prisma"
+      ]
+    },
+    {
+      "title": "Invoice data extraction and PDF redaction",
+      "desc": "Tools that pull invoice fields out of PDFs into structured rows for review, and redact sensitive details in PDFs before they are shared.",
+      "tags": [
+        "JavaScript",
+        "Python",
+        "PDF"
+      ]
+    }
+  ]
+}

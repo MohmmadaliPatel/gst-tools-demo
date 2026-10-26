@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GST &amp; Tax Compliance Software: Fixed-Price Development</title>
+<meta name="description" content="Fixed-price GST, TDS and Income-tax compliance software for CA firms and accounting SaaS. Try two free in-browser demos: GSTR-2B reconciliation and an e-invoice JSON validator.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b5fff'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>₹</text></svg>">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span data-p="name">Mohmmadali</span> <span>· GST &amp; Tax Software</span></a>
+  <nav><a href="#services">Services</a><a href="#demos">Demos</a><a href="#about" class="hide-sm">About</a><a href="#work" class="hide-sm">Work</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <span class="badge">● Taking fixed-price projects</span>
+  <h1 data-p="title"></h1>
+  <p class="lead" data-p="tagline"></p>
+  <div class="row">
+    <a class="btn primary" href="recon.html">Try the GSTR-2B reconciliation demo →</a>
+    <a class="btn" href="einvoice.html">E-invoice JSON validator</a>
+  </div>
+  <p class="note" style="margin-top:14px" data-p="headline_capability"></p>
+</div></div>
+
+<section id="demos"><div class="wrap">
+  <h2>Two working demos</h2>
+  <p class="sub">Both run entirely in your browser. Your files are never uploaded anywhere, and there is no server or analytics.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3>GSTR-2B vs purchase register reconciliation</h3>
+      <p>Upload your GSTR-2B JSON and purchase register (CSV), or use the bundled sample. Fuzzy-matches on GSTIN, invoice number, date and amounts with tolerances you set, then shows Matched, Mismatch (with field-by-field differences), Only in 2B and Only in books, plus ITC totals and a vendor follow-up sheet you can export to Excel.</p>
+      <div class="tags"><span class="tag">GSTR-2B JSON</span><span class="tag">Fuzzy matching</span><span class="tag">ITC at risk</span><span class="tag">Excel export</span></div>
+      <p style="margin-top:14px"><a class="btn primary sm" href="recon.html">Open the demo</a></p>
+    </div>
+    <div class="card">
+      <h3>GST e-invoice JSON builder &amp; validator</h3>
+      <p>Build IRP e-invoice JSON (schema v1.1) from a form or a CSV, or paste existing JSON to check it. Validates the GSTIN checksum, PAN, HSN/SAC, state codes, CGST/SGST vs IGST by place of supply, and the tax and rounding math, with plain-English error messages. It only builds and checks JSON and does not submit anything to the government portal.</p>
+      <div class="tags"><span class="tag">IRP schema v1.1</span><span class="tag">GSTIN checksum</span><span class="tag">Tax math</span><span class="tag">Bulk CSV</span></div>
+      <p style="margin-top:14px"><a class="btn primary sm" href="einvoice.html">Open the demo</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section id="services" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <h2>Fixed-price packages</h2>
+  <p class="sub">Small, clearly scoped jobs. You get tested code, a README and a full handover, with no open-ended hourly billing.</p>
+  <div class="grid g4" id="services-list"></div>
+  <p class="note" style="margin-top:16px"><b>How it works:</b> a short written scope check (async is fine), then a fixed quote paid in 2 milestones, a weekly demo, and a handover of source, README and tests. One round of fixes within 14 days of delivery is included.<br>
+  <b>What I don't do:</b> prepare or file tax returns, act as a tax adviser, or store taxpayers' portal credentials on my systems.</p>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <h2>About me</h2>
+  <div class="grid g2">
+    <div>
+      <div id="about-text"></div>
+      <h3 style="font-size:16px;margin:18px 0 8px">Types of work</h3>
+      <ul id="work-types" style="margin:0;padding-left:18px;color:var(--muted)"></ul>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><h3>Strengths</h3><ul id="strengths" style="margin:0;padding-left:18px;color:var(--muted)"></ul></div>
+      <div class="card"><h3>Tech stack</h3><div id="stack"></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="work" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <h2>Selected work</h2>
+  <p class="sub">This work was built for organisations whose code and data I can't share, so it is described by what it does. The two demos above are the hands-on proof.</p>
+  <div class="grid g4" id="work-list"></div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="card" style="text-align:center;padding:30px">
+    <h2>Have a compliance workflow that eats your team's time?</h2>
+    <p class="sub" style="margin:6px auto 16px;max-width:640px">Just reply to the email that brought you here with a two-line description and a sample file with dummy data. I'll come back with a fixed quote, or tell you honestly if it isn't a fit.</p>
+    <div class="row" style="justify-content:center"><a class="btn primary" href="recon.html">Try the reconciliation demo</a><a class="btn" href="einvoice.html">Try the e-invoice validator</a></div>
+    <p class="note" style="margin-top:12px" id="contact-line"></p>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span data-p="name"></span> · <span data-p="location"></span> · The demos run 100% in your browser and use synthetic sample data. The GSTR-2B and e-invoice formats follow public GSTN/NIC specifications. This site is not affiliated with GSTN, NIC or the Government of India.
+</div></footer>
+<script type="module" src="js/landing.js"></script>
+</body>
+</html>

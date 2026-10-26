@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GST E-Invoice JSON Builder &amp; Validator (IRP Schema v1.1): In-Browser Demo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">Mohmmadali <span>· GST &amp; Tax Software</span></a>
+  <nav><a href="index.html">Home</a><a href="recon.html">Reconciliation</a><a href="einvoice.html" class="active">E-invoice</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="tool-head">
+    <h1>GST e-invoice JSON builder &amp; validator</h1>
+    <p>Build IRP e-invoice JSON (schema v1.1, from the public NIC specification) and catch errors before upload: GSTIN checksum, PAN, HSN/SAC, state codes, CGST/SGST vs IGST by place of supply, and the tax and rounding math.</p>
+  </div>
+  <div class="warnbox" style="margin:10px 0 10px">⚠️ <b>Builder and validator only.</b> This page does <b>not</b> generate an IRN and does <b>not</b> submit anything to the e-invoice portal (IRP) or any other government system. Use the downloaded JSON with your GSP or the IRP's offline/bulk upload.</div>
+  <div class="privacy" style="margin:0 0 16px">🔒 <div><b>Your data never leaves this browser.</b> Everything runs locally, with no server, API keys or tracking. Sample GSTINs are synthetic.</div></div>
+
+  <div class="tabs" id="modes"><button class="on" data-m="form">Build from form</button><button data-m="csv">Bulk from CSV</button><button data-m="json">Validate existing JSON</button></div>
+
+  <div class="split">
+    <div>
+      <div id="m-form">
+        <div class="panel"><h2>Document</h2><div class="fields">
+          <div><label>Supply type</label><select id="supTyp"><option>B2B</option><option>SEZWP</option><option>SEZWOP</option><option>EXPWP</option><option>EXPWOP</option><option>DEXP</option></select></div>
+          <div><label>Document type</label><select id="docTyp"><option value="INV">Invoice</option><option value="CRN">Credit note</option><option value="DBN">Debit note</option></select></div>
+          <div><label>Document no.</label><input id="docNo"></div>
+          <div><label>Date</label><input id="docDt" type="date"></div>
+        </div></div>
+        <div class="panel"><h2>Seller</h2><div class="fields">
+          <div><label>GSTIN</label><input id="sGstin"></div><div><label>Legal name</label><input id="sName"></div>
+          <div><label>Address</label><input id="sAddr"></div><div><label>City</label><input id="sLoc"></div><div><label>PIN</label><input id="sPin"></div>
+        </div></div>
+        <div class="panel"><h2>Buyer</h2><div class="fields">
+          <div><label>GSTIN (URP for exports)</label><input id="bGstin"></div><div><label>Legal name</label><input id="bName"></div>
+          <div><label>Address</label><input id="bAddr"></div><div><label>City</label><input id="bLoc"></div><div><label>PIN</label><input id="bPin"></div>
+          <div><label>State code</label><input id="bStcd" placeholder="from GSTIN"></div>
+          <div><label>Place of supply</label><select id="pos"></select></div>
+        </div></div>
+        <div class="panel"><h2>Items</h2>
+          <div class="tbl-wrap"><table class="items" id="items"></table></div>
+          <div class="row" style="margin-top:10px"><button class="btn sm" id="addItem">+ Add item</button><button class="btn sm" id="loadGood">Load valid sample</button><button class="btn sm" id="loadBad">Load sample with errors</button></div>
+        </div>
+      </div>
+      <div id="m-csv" hidden><div class="panel"><h2>Bulk from CSV (one row per item, grouped by doc_no)</h2>
+        <input type="file" id="csvFile" accept=".csv">
+        <div class="row" style="margin-top:10px"><button class="btn sm" id="csvSample">Use sample CSV</button><a class="btn sm" href="samples/einvoice_rows.csv" download>Download CSV template</a></div>
+        <div id="csvList" style="margin-top:12px"></div>
+      </div></div>
+      <div id="m-json" hidden><div class="panel"><h2>Paste e-invoice JSON (object or array)</h2>
+        <textarea id="jsonIn" rows="18" spellcheck="false" placeholder='{"Version":"1.1", ...}'></textarea>
+        <div class="row" style="margin-top:10px"><button class="btn primary sm" id="validateBtn">Validate</button><button class="btn sm" id="brokenJson">Load JSON with tax errors</button></div>
+      </div></div>
+    </div>
+    <div>
+      <div class="panel"><h2>Validation</h2><ul class="msgs" id="msgs"></ul></div>
+      <div class="panel"><h2>Totals</h2><div class="kpis" id="totals"></div></div>
+      <div class="panel"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h2 style="margin:0">IRP JSON (v1.1)</h2><button class="btn primary sm" id="dl">⬇ Download JSON</button></div><pre class="json" id="json"></pre></div>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap">Builder/validator only. Does not submit to IRP/NIC/GSTN · Runs 100% in your browser · Synthetic sample data · <a href="index.html">Back to services</a></div></footer>
+<script type="module" src="js/einvoice-ui.js"></script>
+</body>
+</html>

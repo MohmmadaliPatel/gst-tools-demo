@@ -1,0 +1,389 @@
+{
+  "_note": "SYNTHETIC SAMPLE in the public GSTR-2B JSON shape. All names and GSTINs are fictional.",
+  "chksum": "SAMPLE",
+  "data": {
+    "gstin": "27AAECD0001K1Z5",
+    "rtnprd": "092026",
+    "version": "1.0",
+    "gendt": "14-10-2026",
+    "docdata": {
+      "b2b": [
+        {
+          "ctin": "27AABCE1111M1ZY",
+          "trdnm": "Example Steel Traders",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "inv": [
+            {
+              "inum": "EST/1001",
+              "typ": "R",
+              "dt": "03-09-2026",
+              "val": 118000,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 100000,
+                  "igst": 0,
+                  "cgst": 9000,
+                  "sgst": 9000,
+                  "cess": 0
+                }
+              ]
+            },
+            {
+              "inum": "EST/1017",
+              "typ": "R",
+              "dt": "12-09-2026",
+              "val": 53100,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 45000,
+                  "igst": 0,
+                  "cgst": 4050,
+                  "sgst": 4050,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ctin": "27AADFS2222P1Z0",
+          "trdnm": "Sample Office Supplies",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "inv": [
+            {
+              "inum": "SOS-0045",
+              "typ": "R",
+              "dt": "05-09-2026",
+              "val": 13440,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 12,
+                  "txval": 12000,
+                  "igst": 0,
+                  "cgst": 720,
+                  "sgst": 720,
+                  "cess": 0
+                }
+              ]
+            },
+            {
+              "inum": "SOS-0052",
+              "typ": "R",
+              "dt": "28-09-2026",
+              "val": 7552,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 6400,
+                  "igst": 0,
+                  "cgst": 576,
+                  "sgst": 576,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ctin": "24AAGCT3333Q1Z0",
+          "trdnm": "Test Logistics Pvt Ltd",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "inv": [
+            {
+              "inum": "TL/26-27/118",
+              "typ": "R",
+              "dt": "08-09-2026",
+              "val": 84000,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 5,
+                  "txval": 80000,
+                  "igst": 4000,
+                  "cgst": 0,
+                  "sgst": 0,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ctin": "29AAHCD4444R1ZX",
+          "trdnm": "Demo Cloud Services Pvt Ltd",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "inv": [
+            {
+              "inum": "DCS2026090041",
+              "typ": "R",
+              "dt": "01-09-2026",
+              "val": 177000,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "e-Invoice",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 150000,
+                  "igst": 27000,
+                  "cgst": 0,
+                  "sgst": 0,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ctin": "27AAJFM5555L1ZQ",
+          "trdnm": "Mock Packaging Co",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "inv": [
+            {
+              "inum": "MPC/552",
+              "typ": "R",
+              "dt": "18-09-2026",
+              "val": 33600,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 12,
+                  "txval": 30000,
+                  "igst": 0,
+                  "cgst": 1800,
+                  "sgst": 1800,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ctin": "33AAKCF6666N1ZZ",
+          "trdnm": "Fictional Chemicals Ltd",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "inv": [
+            {
+              "inum": "FCL-7781",
+              "typ": "R",
+              "dt": "21-09-2026",
+              "val": 75520,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 64000,
+                  "igst": 11520,
+                  "cgst": 0,
+                  "sgst": 0,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ctin": "07AALPZ7777H1ZP",
+          "trdnm": "Placeholder Printing Works",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "inv": [
+            {
+              "inum": "PPW/233",
+              "typ": "R",
+              "dt": "25-09-2026",
+              "val": 10620,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "N",
+              "rsn": "P",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 9000,
+                  "igst": 1620,
+                  "cgst": 0,
+                  "sgst": 0,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ctin": "27AAMCQ8888J1ZB",
+          "trdnm": "Imaginary Electricals LLP",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "inv": [
+            {
+              "inum": "IE/0091",
+              "typ": "R",
+              "dt": "27-09-2026",
+              "val": 25960,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 22000,
+                  "igst": 0,
+                  "cgst": 1980,
+                  "sgst": 1980,
+                  "cess": 0
+                }
+              ]
+            },
+            {
+              "inum": "IE/0094",
+              "typ": "R",
+              "dt": "29-09-2026",
+              "val": 18290.48,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 15500.4,
+                  "igst": 0,
+                  "cgst": 1395.04,
+                  "sgst": 1395.04,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cdnr": [
+        {
+          "ctin": "27AABCE1111M1ZY",
+          "trdnm": "Example Steel Traders",
+          "supfildt": "11-10-2026",
+          "supprd": "092026",
+          "nt": [
+            {
+              "ntnum": "EST/CN/07",
+              "typ": "C",
+              "suptyp": "R",
+              "dt": "20-09-2026",
+              "val": 5900,
+              "pos": "27",
+              "rev": "N",
+              "itcavl": "Y",
+              "rsn": "",
+              "diffprcnt": 1,
+              "srctyp": "Upload",
+              "irn": "",
+              "irngendate": "",
+              "items": [
+                {
+                  "num": 1,
+                  "rt": 18,
+                  "txval": 5000,
+                  "igst": 0,
+                  "cgst": 450,
+                  "sgst": 450,
+                  "cess": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

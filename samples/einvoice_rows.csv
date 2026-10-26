@@ -1,0 +1,4 @@
+doc_no,doc_date,sup_typ,doc_type,seller_gstin,seller_name,seller_addr,seller_loc,seller_pin,buyer_gstin,buyer_name,buyer_addr,buyer_loc,buyer_pin,pos,item_desc,is_service,hsn,qty,unit,unit_price,discount,gst_rate
+DEMO/26-27/101,2026-10-20,B2B,INV,27AAECD0001K1Z5,Demo Software Solutions Pvt Ltd,101 Sample Tech Park,Pune,411001,29AAHCD4444R1ZX,Demo Cloud Services Pvt Ltd,22 Example Road,Bengaluru,560001,29,GST reconciliation tool - fixed price build,Y,998314,1,OTH,30000,0,18
+DEMO/26-27/101,2026-10-20,B2B,INV,27AAECD0001K1Z5,Demo Software Solutions Pvt Ltd,101 Sample Tech Park,Pune,411001,29AAHCD4444R1ZX,Demo Cloud Services Pvt Ltd,22 Example Road,Bengaluru,560001,29,Annual schema update support,Y,998313,1,OTH,12500.5,500,18
+DEMO/26-27/102,2026-10-21,B2B,INV,27AAECD0001K1Z5,Demo Software Solutions Pvt Ltd,101 Sample Tech Park,Pune,411001,27AAJFM5555L1ZQ,Mock Packaging Co,9 Mock Industrial Estate,Mumbai,400001,27,Thermal label printer,N,84433250,3,NOS,8499.99,0,18

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GSTR-2B vs Purchase Register Reconciliation: In-Browser Demo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">Mohmmadali <span>· GST &amp; Tax Software</span></a>
+  <nav><a href="index.html">Home</a><a href="recon.html" class="active">Reconciliation</a><a href="einvoice.html">E-invoice</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="tool-head">
+    <h1>GSTR-2B vs purchase register reconciliation</h1>
+    <p>Match your books against GSTR-2B and find the ITC at risk, invoice by invoice.</p>
+  </div>
+  <div class="privacy" style="margin:10px 0 16px">🔒 <div><b>Your data never leaves this browser.</b> Files are read locally with JavaScript. Nothing is uploaded, stored or tracked, and this page has no server. The bundled sample uses fictional suppliers with synthetic GSTINs.</div></div>
+
+  <div class="panel">
+    <h2>1. Load data</h2>
+    <div class="grid g2">
+      <div>
+        <label for="f2b">GSTR-2B JSON (as downloaded from the GST portal)</label>
+        <div class="drop" id="d2b">No file loaded</div>
+        <input type="file" id="f2b" accept=".json,application/json" style="margin-top:6px">
+      </div>
+      <div>
+        <label for="fbk">Purchase register CSV</label>
+        <div class="drop" id="dbk">No file loaded</div>
+        <input type="file" id="fbk" accept=".csv,text/csv" style="margin-top:6px">
+        <p class="note" style="margin:4px 0 0">Columns (flexible names): Supplier GSTIN, Supplier Name, Invoice No, Invoice Date, Taxable Value, IGST, CGST, SGST, Cess, and optional Type (Invoice/Credit Note). Export from Tally or Excel as CSV.</p>
+      </div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="sample">Use sample data</button>
+      <a class="btn sm" href="samples/gstr2b_sample.json" download>Sample 2B JSON</a>
+      <a class="btn sm" href="samples/purchase_register.csv" download>Sample register CSV</a>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>2. Matching rules</h2>
+    <div class="fields">
+      <div><label for="tv">Taxable value tolerance (₹)</label><input id="tv" type="number" step="0.01" min="0" value="1"></div>
+      <div><label for="tt">Tax tolerance per head (₹)</label><input id="tt" type="number" step="0.01" min="0" value="1"></div>
+      <div><label for="td">Date tolerance (days)</label><input id="td" type="number" step="1" min="0" value="0"></div>
+      <div><label for="sim">Fuzzy invoice-no. threshold</label><input id="sim" type="number" step="0.05" min="0.5" max="1" value="0.75"></div>
+      <div><label><input type="checkbox" id="fz" checked style="width:auto"> Fuzzy invoice numbers</label><label><input type="checkbox" id="xg" checked style="width:auto"> Detect GSTIN typos</label></div>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn primary" id="run" disabled>Reconcile</button><span class="note" id="status"></span></div>
+  </div>
+
+  <div id="out" hidden>
+    <div class="panel">
+      <h2>ITC summary</h2>
+      <div class="kpis" id="kpis"></div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn sm" id="xls">⬇ Excel workbook (summary, results, vendor follow-up)</button>
+        <button class="btn sm" id="csv">⬇ Results CSV</button>
+        <button class="btn sm" id="vcsv">⬇ Vendor follow-up CSV</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Results</h2>
+      <div class="tabs" id="tabs"></div>
+      <div class="tbl-wrap"><table id="tbl"></table></div>
+    </div>
+    <div class="panel">
+      <h2>Vendor follow-up sheet</h2>
+      <p class="note" style="margin-top:-6px">Suppliers to chase, sorted by ITC at risk. Copy the action into your email or WhatsApp to the vendor.</p>
+      <div class="tbl-wrap"><table id="vtbl"></table></div>
+    </div>
+  </div>
+  <p class="note">This demo shows the approach. A client build adds IMS actions, multi-month carry-forward, Tally/Zoho exports and your own column mappings.</p>
+</main>
+<footer><div class="wrap">Runs 100% in your browser · Synthetic sample data · Not affiliated with GSTN or the Government of India · <a href="index.html">Back to services</a></div></footer>
+<script type="module" src="js/recon-ui.js"></script>
+</body>
+</html>
