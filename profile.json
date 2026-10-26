@@ -1,10 +1,10 @@
 {
   "_comment": "Single editable source for the landing page. Do not name employers or clients, and do not link code repositories. Any text in [square brackets] renders as a highlighted placeholder, so the published file must contain none.",
   "name": "Mohmmadali",
-  "title": "Freelance developer for GST, TDS and Income-tax compliance software",
+  "title": "Freelance developer for GST compliance software and quick small-business tools",
   "location": "India (IST)",
   "availability": "Taking fixed-price projects",
-  "tagline": "I build tax-form, e-filing and GST automation software, and I take small, fixed-scope jobs for CA firms and accounting/billing SaaS teams.",
+  "tagline": "I build tax-form, e-filing and GST automation software, and I take small, fixed-scope jobs for CA firms and accounting/billing SaaS teams. I also build quick, fixed-price tools for small businesses: quotations, stock tracking and renewal reminders.",
   "headline_capability": "Automation for the Income Tax e-filing, TRACES and GST portals: bulk downloads, data extraction, status tracking and reconciliation workflows for CA firms.",
   "about": [
     "I build tax-form and e-filing software professionally, so I know the details that break compliance code: schema versions, rounding rules, duplicate submissions and yearly rule changes.",
@@ -130,6 +130,35 @@
         "Python",
         "PDF"
       ]
+    }
+  ],
+  "quick_tools": [
+    {
+      "id": "Q1",
+      "name": "Quotation & proforma builder",
+      "from": "₹12,000",
+      "usd": "$250",
+      "timeline": "7-10 days",
+      "demo": "quote.html",
+      "desc": "Your item master and rate card, GST split by state, weight or per-word pricing, your letterhead and terms, print/PDF, numbering by financial year, and a quote register with follow-up dates."
+    },
+    {
+      "id": "Q2",
+      "name": "Stock tracker & channel check",
+      "from": "₹15,000",
+      "usd": "$300",
+      "timeline": "10-14 days",
+      "demo": "stock.html",
+      "desc": "Inward/outward/returns/damaged log to live stock by SKU, size and colour, low-stock flags, a Shopify or marketplace stock comparison from their CSV exports, and a daily Excel report."
+    },
+    {
+      "id": "Q3",
+      "name": "Renewals & fee reminders",
+      "from": "₹10,000",
+      "usd": "$200",
+      "timeline": "5-7 days",
+      "demo": "renewals.html",
+      "desc": "Reads your member or student sheet and lists who has expired, who is due this week, who is low on classes and who owes fees, with personalised reminder messages ready to copy."
     }
   ]
 }

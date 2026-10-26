@@ -61,3 +61,15 @@ pre.json{background:#0f1b2d;color:#d6e2ff;padding:14px;border-radius:10px;overfl
 .split>div{min-width:0}
 .items td select{min-width:96px;padding:6px 8px}
 .logo span[data-p]{color:var(--ink)}
+/* quick tools */
+.doc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;font-size:13.5px}
+.doc h3{margin:0;font-size:18px}.doc .meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:10px 0 14px;color:#34465c}
+.doc table td,.doc table th{white-space:normal}
+.doc .tot{margin-left:auto;max-width:340px}.doc .tot div{display:flex;justify-content:space-between;padding:3px 0}.doc .tot .g{font-weight:700;font-size:16px;border-top:1px solid var(--line);margin-top:4px;padding-top:6px}
+.p-Sent{background:var(--info-bg);color:var(--info)}.p-Won{background:var(--ok-bg);color:var(--ok)}.p-Lost{background:var(--bad-bg);color:var(--bad)}
+.p-Low{background:var(--warn-bg);color:var(--warn)}.p-Out{background:var(--bad-bg);color:var(--bad)}.p-OK{background:var(--ok-bg);color:var(--ok)}.p-Mismatch-qty{background:var(--warn-bg);color:var(--warn)}.p-Oversell-risk{background:var(--bad-bg);color:var(--bad)}.p-Not-listed{background:var(--info-bg);color:var(--info)}
+.p-Expired{background:var(--bad-bg);color:var(--bad)}.p-Due-soon{background:var(--warn-bg);color:var(--warn)}.p-Low-balance{background:var(--warn-bg);color:var(--warn)}.p-Fee-pending{background:var(--info-bg);color:var(--info)}.p-Active{background:var(--ok-bg);color:var(--ok)}
+.msgbox{white-space:pre-wrap;background:#f3f6fa;border-radius:8px;padding:8px 10px;font-size:13px;min-width:280px}
+@media print{header.top,footer,.no-print,.privacy,.tool-head{display:none!important}body{background:#fff}.doc{border:0;padding:0}.panel{border:0;box-shadow:none;padding:0}}
+.doc{overflow-x:auto}.doc table th,.doc table td{padding:6px 6px;font-size:12.5px}.doc table td:nth-child(2){min-width:150px}
+.split.even{grid-template-columns:1fr 1fr}@media(max-width:900px){.split.even{grid-template-columns:1fr}}

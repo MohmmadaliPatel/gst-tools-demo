@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quotation &amp; Proforma Builder: In-Browser Demo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">Mohmmadali <span>· Small business tools</span></a>
+  <nav><a href="index.html">Home</a><a href="quote.html" class="active">Quotes</a><a href="stock.html">Stock</a><a href="renewals.html">Renewals</a><a href="recon.html" class="hide-sm">GST recon</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="tool-head">
+    <h1>Quotation &amp; proforma builder</h1>
+    <p>Pick items from a rate card, enter quantities, and get a GST-correct quote in seconds: weight-based pricing, CGST/SGST or IGST by state, amount in words, container fill for exports, and a register that tells you which quotes to follow up today.</p>
+  </div>
+  <div class="privacy" style="margin:10px 0 16px">🔒 <div><b>Runs entirely in this browser.</b> No server, no uploads, no tracking. Rate cards and companies below are fictional samples. Saved quotes stay in this browser's local storage only.</div></div>
+
+  <div class="split even">
+    <div>
+      <div class="panel no-print">
+        <h2>1. Business type &amp; parties</h2>
+        <div class="fields">
+          <div><label for="preset">Sample rate card</label><select id="preset"></select></div>
+          <div><label for="client">Client name</label><input id="client" value="Sample Buyer Pvt Ltd"></div>
+          <div><label for="bstate">Client state</label><select id="bstate"></select></div>
+          <div><label for="qdate">Quote date</label><input id="qdate" type="date"></div>
+          <div><label for="valid">Valid for (days)</label><input id="valid" type="number" min="1" value="7"></div>
+          <div><label for="freight">Freight / packing (₹)</label><input id="freight" type="number" min="0" value="0"></div>
+        </div>
+        <label style="margin-top:10px;display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" id="exp" style="width:auto"> Export quote (zero-rated, show CBM &amp; container fill)</label>
+      </div>
+      <div class="panel no-print">
+        <h2>2. Items</h2>
+        <div class="tbl-wrap"><table class="items" id="lines"></table></div>
+        <div class="row" style="margin-top:10px"><select id="additem" style="max-width:360px"></select><button class="btn sm" id="add">+ Add line</button></div>
+        <p class="note" style="margin:8px 0 0">Items priced per kg take the length/quantity and multiply by kg per unit (weight chart) before applying the rate.</p>
+      </div>
+      <div class="panel no-print">
+        <h2>3. Save &amp; follow up</h2>
+        <div class="row"><button class="btn primary" id="save">Save to quote register</button><button class="btn" id="print">Print / save as PDF</button><button class="btn sm" id="csv">⬇ Register CSV</button><button class="btn sm" id="reset">Reset sample register</button></div>
+        <div class="kpis" id="kpis" style="margin-top:12px"></div>
+        <h2 style="margin-top:14px">Follow up today</h2>
+        <div class="tbl-wrap"><table id="due"></table></div>
+        <h2 style="margin-top:14px">Quote register</h2>
+        <div class="tbl-wrap"><table id="reg"></table></div>
+      </div>
+    </div>
+    <div>
+      <div class="panel"><div class="doc" id="doc"></div></div>
+    </div>
+  </div>
+  <p class="note">This demo shows the approach. A client build uses your item master and weight chart, your letterhead and terms, numbering series, and can export to Excel/Tally or save quotes to a shared sheet.</p>
+</main>
+<footer><div class="wrap">Runs 100% in your browser · Fictional sample data · <a href="index.html">Back to services</a></div></footer>
+<script type="module" src="js/quote-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+sku,name,size,colour,reorder,opening
+LS-WHI-S,Linen Shirt,S,White,5,14
+LS-OLI-S,Linen Shirt,S,Olive,5,8
+LS-WHI-M,Linen Shirt,M,White,5,16
+LS-OLI-M,Linen Shirt,M,Olive,5,5
+LS-WHI-L,Linen Shirt,L,White,5,6
+LS-OLI-L,Linen Shirt,L,Olive,5,7
+LS-WHI-XL,Linen Shirt,XL,White,5,15
+LS-OLI-XL,Linen Shirt,XL,Olive,5,5
+OX-BLU-S,Oxford Shirt,S,Blue,5,20
+OX-WHI-S,Oxford Shirt,S,White,5,10
+OX-BLU-M,Oxford Shirt,M,Blue,5,5
+OX-WHI-M,Oxford Shirt,M,White,5,6
+OX-BLU-L,Oxford Shirt,L,Blue,5,17
+OX-WHI-L,Oxford Shirt,L,White,5,17
+OX-BLU-XL,Oxford Shirt,XL,Blue,5,6
+OX-WHI-XL,Oxford Shirt,XL,White,5,11
+ER-SIL-FREE,Silver Stud Earrings,Free,Silver,8,6
+BR-SIL-16CM,Chain Bracelet,16cm,Silver,8,17
+BR-SIL-18CM,Chain Bracelet,18cm,Silver,8,5

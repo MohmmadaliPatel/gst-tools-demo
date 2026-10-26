@@ -25,10 +25,31 @@ await page.evaluate(() => window.scrollTo(0, 0)); await page.screenshot({ path: 
 await page.click('#loadGood');
 await page.evaluate(() => window.scrollTo(0, 0)); await page.screenshot({ path: 'screenshots/04-einvoice-valid.png', fullPage: false });
 
+await page.goto(`${base}/quote.html`); await page.waitForSelector('#doc table');
+const quoteTotal = await page.$eval('#doc .tot .g', (e) => e.textContent);
+await page.click('#save'); const dueRows = await page.$$eval('#due tr', (l) => l.length - 1);
+await page.evaluate(() => window.scrollTo(0, 0)); await page.screenshot({ path: 'screenshots/06-quote-builder.png', fullPage: true });
+await page.goto(`${base}/quote.html?type=export`); await page.waitForSelector('#doc table');
+const exportNote = await page.$eval('#doc', (e) => (e.textContent.match(/Volume:[^·]+/) || [''])[0]);
+await page.screenshot({ path: 'screenshots/07-quote-export.png', fullPage: false });
+
+await page.goto(`${base}/stock.html`); await page.click('#sample'); await page.waitForSelector('#tbl tr td');
+const stockKpis = await page.$eval('#kpis', (e) => e.innerText.replace(/\n/g, ' '));
+const recRows = await page.$$eval('#rec tr', (l) => l.length - 1);
+const dl2 = page.waitForEvent('download'); await page.click('#xls'); const sx = await dl2;
+await page.evaluate(() => window.scrollTo(0, 0)); await page.screenshot({ path: 'screenshots/08-stock-tracker.png', fullPage: true });
+
+await page.goto(`${base}/renewals.html`); await page.click('#sample'); await page.waitForSelector('#tbl tr td');
+const renewKpis = await page.$eval('#kpis', (e) => e.innerText.replace(/\n/g, ' '));
+await page.evaluate(() => window.scrollTo(0, 0)); await page.screenshot({ path: 'screenshots/09-renewals.png', fullPage: true });
+
+await page.goto(`${base}/index.html#quick-tools`); await page.waitForSelector('#quick-list .card');
+await page.$eval('#demos', (e) => e.scrollIntoView()); await page.screenshot({ path: 'screenshots/10-landing-demos.png', fullPage: false });
+
 const m = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true });
 await m.goto(`${base}/index.html`); await m.waitForSelector('#work-list .card');
 await m.screenshot({ path: 'screenshots/05-landing-mobile.png', fullPage: false });
 await browser.close();
 
-console.log(JSON.stringify({ reconTabs: counts, excelDownload: xls.suggestedFilename(), einvoiceValid: goodMsg.slice(0, 80), einvoiceBadErrors: badCount, errors }, null, 2));
+console.log(JSON.stringify({ reconTabs: counts, excelDownload: xls.suggestedFilename(), einvoiceValid: goodMsg.slice(0, 80), einvoiceBadErrors: badCount, quoteTotal, quoteDueRows: dueRows, exportNote, stockKpis, stockMismatches: recRows, stockExcel: sx.suggestedFilename(), renewKpis, errors }, null, 2));
 if (errors.length) process.exit(1);

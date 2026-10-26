@@ -17,3 +17,9 @@ document.getElementById('work-list').innerHTML = p.selected_work.map((w) => `
   <div class="card"><h3>${fmt(w.title)}</h3><p style="font-size:14px">${fmt(w.desc)}</p>
   <div class="tags">${w.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div></div>`).join('');
 document.getElementById('contact-line').innerHTML = `${fmt(p.location)} · ${fmt(p.availability)}`;
+const qt = document.getElementById('quick-list');
+if (qt && p.quick_tools) qt.innerHTML = p.quick_tools.map((s) => `
+  <div class="card"><h3>${fmt(s.name)}</h3>
+  <div class="price"><small>from</small> ${fmt(s.from)} <small>/ ${esc(s.usd)}</small></div>
+  <div class="note" style="margin-bottom:8px">${fmt(s.timeline)} · fixed price</div><p style="font-size:14px">${fmt(s.desc)}</p>
+  <p><a class="btn sm" href="${esc(s.demo)}">See the demo</a></p></div>`).join('');

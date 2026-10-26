@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Renewals &amp; Fee Reminder Board: In-Browser Demo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">Mohmmadali <span>· Small business tools</span></a>
+  <nav><a href="index.html">Home</a><a href="quote.html">Quotes</a><a href="stock.html">Stock</a><a href="renewals.html" class="active">Renewals</a><a href="recon.html" class="hide-sm">GST recon</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="tool-head">
+    <h1>Renewals &amp; fee reminder board</h1>
+    <p>For studios, coaching classes and academies: load your member or student sheet and see who has expired, who is due this week, who is running out of classes and who owes fees, each with a ready-to-send, personalised reminder.</p>
+  </div>
+  <div class="privacy" style="margin:10px 0 16px">🔒 <div><b>Runs entirely in this browser.</b> Your sheet is read locally. Nothing is uploaded and no messages are sent from this page; you copy the text. The sample names are fictional.</div></div>
+
+  <div class="panel">
+    <h2>1. Load members / students</h2>
+    <div class="grid g2">
+      <div><label for="fm">Members CSV (export from Google Sheets / Excel)</label><div class="drop" id="dm">No file loaded</div><input type="file" id="fm" accept=".csv" style="margin-top:6px">
+        <p class="note" style="margin:4px 0 0">name, plan, expiry (DD-MM-YYYY or YYYY-MM-DD), sessions_total, sessions_used, fee_total, fee_paid, renewal_price</p></div>
+      <div class="fields">
+        <div><label for="today">Today</label><input type="date" id="today" value="2026-10-26"></div>
+        <div><label for="due">"Due soon" window (days)</label><input type="number" id="due" min="1" value="7"></div>
+        <div><label for="low">Low balance at ≤ sessions</label><input type="number" id="low" min="0" value="2"></div>
+        <div><label for="biz">Sign-off name</label><input id="biz" value="Team Sample Studio"></div>
+      </div>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn primary" id="sample">Use sample data</button><a class="btn sm" href="samples/members.csv" download>Sample members CSV</a></div>
+  </div>
+  <div id="out" hidden>
+    <div class="panel"><h2>2. This week</h2><div class="kpis" id="kpis"></div></div>
+    <div class="panel"><h2>3. Reminder queue</h2><div class="tabs" id="tabs"></div><div class="tbl-wrap"><table id="tbl"></table></div>
+      <div class="row" style="margin-top:10px"><button class="btn sm" id="csv">⬇ Reminder list CSV</button></div></div>
+    <div class="panel"><h2>Message templates</h2><p class="note" style="margin-top:-6px">Placeholders: {first} {name} {plan} {expiry} {days} {left} {pending} {renewal} {business}</p><div class="grid g2" id="tpls"></div></div>
+  </div>
+  <p class="note">This demo shows the approach. A client build reads your live Google Sheet, logs attendance, and can send reminders through WhatsApp Business or email on a schedule, with your approval.</p>
+</main>
+<footer><div class="wrap">Runs 100% in your browser · Fictional sample data · <a href="index.html">Back to services</a></div></footer>
+<script type="module" src="js/renewals-ui.js"></script>
+</body>
+</html>

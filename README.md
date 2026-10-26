@@ -1,12 +1,15 @@
 # GST compliance tools: portfolio demo
 
-A fully static site with two working, in-browser GST tools and a services/about landing page.
+A fully static site with working, in-browser demos (two GST tools and three quick small-business tools) and a services/about landing page.
 
 | Page | What it does |
 |---|---|
 | `index.html` | Landing page: services (fixed-price packages), demos, About me, Selected work, contact. **All text comes from `profile.json`.** |
 | `recon.html` | **GSTR-2B vs purchase register reconciliation.** Normalises GSTINs and invoice numbers, then matches in three passes: (1) exact GSTIN + invoice no., (2) fuzzy invoice no. within the same GSTIN, scored on similarity, date and amount, (3) GSTIN typos with the same PAN or 1–2 characters different. Shows Matched / Mismatch (with field-by-field differences) / Only in 2B / Only in books, ITC summary totals, and a vendor follow-up sheet. Exports CSV and an Excel workbook. Tolerances for value, tax and date are configurable. |
 | `einvoice.html` | **GST e-invoice JSON builder & validator** (IRP schema v1.1). Build from a form or bulk CSV, or paste existing JSON. Checks GSTIN format and mod-36 checksum, PAN, HSN/SAC length and service codes, state/POS codes, CGST+SGST vs IGST by place of supply, tax math with ±₹1 tolerance, totals and round-off, doc no./date/PIN rules. **It does not submit anything to IRP/NIC/GSTN.** |
+| `quote.html` | **Quotation & proforma builder.** Rate-card presets (per-kg pipes/tubes, FOB export cost sheet with CBM/container fill, per-word translation; `?type=steel|export|translation`), discount, CGST/SGST vs IGST by state, freight, round-off, amount in words (lakh/crore), FY quote numbering, print/PDF, and a quote register with follow-up queue (browser local storage only). |
+| `stock.html` | **Stock tracker & channel reconciliation.** SKU master + IN/OUT/RETURN/DAMAGED/ADJUST movements → available stock by SKU/size/colour, low/negative stock, unknown-SKU warnings, Shopify/marketplace inventory comparison (oversell risk), size×colour grid, daily Excel report. |
+| `renewals.html` | **Renewals & fee reminder board.** Member/student CSV (DD-MM-YYYY ok) → expired / due soon / low sessions / fee pending, editable message templates with placeholders, copy-to-clipboard, reminder list CSV. Sends nothing. |
 
 **Privacy:** there's no backend, API keys, analytics or external requests. Every file is processed in the browser, and the smoke test fails if the page makes any non-local request.
 **Data:** all sample files in `samples/` are synthetic, with fictional names and checksum-valid but made-up GSTINs (regenerate with `npm run samples`). The formats follow public GSTN (GSTR-2B JSON) and NIC (e-invoice schema v1.1) specs.
@@ -33,14 +36,17 @@ python3 -m http.server 8080 & node scripts/screenshots.mjs
 
 ## Project layout
 ```
-index.html recon.html einvoice.html profile.json
+index.html recon.html einvoice.html quote.html stock.html renewals.html profile.json
 css/style.css
 js/gst.js        GSTIN/PAN validation, checksum, state codes, rounding
 js/recon.js      reconciliation engine (pure)
 js/einvoice.js   e-invoice builder + validator (pure)
 js/csv.js        CSV parse/export + Excel (SpreadsheetML) writer
+js/quote.js      quotation maths, amount in words, FY numbering, follow-ups (pure)
+js/stock.js      stock ledger + channel reconciliation (pure)
+js/renewals.js   renewal/fee classification + message templates (pure)
 js/*-ui.js       page wiring
-samples/         synthetic GSTR-2B JSON, purchase register CSV, e-invoice CSV
+samples/         synthetic GSTR-2B JSON, purchase register CSV, e-invoice CSV, stock and member CSVs
 tests/           node:test unit tests
 scripts/         sample generator, screenshot/smoke script
 ```
