@@ -1,23 +1,18 @@
 import { computeQuote, nextQuoteNo, followUpQueue, winRate } from './quote.js';
 import { PRESETS } from './quote-presets.js';
 import { toCsv } from './csv.js';
+import { localToday } from './sample-dates.js';
+import { sampleRegister } from './quote-sample.js';
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]));
 const inr = (n) => Number(n).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const STATES = ['Chandigarh', 'Delhi', 'Gujarat', 'Haryana', 'Karnataka', 'Maharashtra', 'Punjab', 'Rajasthan', 'Tamil Nadu', 'Telangana', 'Uttar Pradesh', 'West Bengal'];
 const KEY = 'demo-quote-register-v1';
-const TODAY = '2026-10-26';
-const SAMPLE_REG = [
-  { no: 'Q/2026-27/0041', client: 'Fictional Fabricators', date: '2026-10-14', amount: 182400, status: 'Sent', followUp: '2026-10-21' },
-  { no: 'Q/2026-27/0042', client: 'Demo Builders LLP', date: '2026-10-17', amount: 64250, status: 'Won', followUp: '' },
-  { no: 'Q/2026-27/0043', client: 'Example Interiors', date: '2026-10-20', amount: 23900, status: 'Sent', followUp: '2026-10-26' },
-  { no: 'Q/2026-27/0044', client: 'Test Engineering Works', date: '2026-10-21', amount: 412000, status: 'Lost', followUp: '' },
-  { no: 'Q/2026-27/0045', client: 'Placeholder Projects', date: '2026-10-23', amount: 97500, status: 'Sent', followUp: '2026-10-30' },
-];
+const TODAY = localToday(); // the visitor's own date; the sample register is shifted to match
 let preset = 'steel', lines = [], register = load();
 
-function load() { try { return JSON.parse(localStorage.getItem(KEY)) || SAMPLE_REG.slice(); } catch { return SAMPLE_REG.slice(); } }
+function load() { try { return JSON.parse(localStorage.getItem(KEY)) || sampleRegister(TODAY); } catch { return sampleRegister(TODAY); } }
 function persist() { try { localStorage.setItem(KEY, JSON.stringify(register)); } catch { /* private mode */ } }
 
 $('preset').innerHTML = Object.entries(PRESETS).map(([k, v]) => `<option value="${k}">${esc(v.label)}</option>`).join('');
@@ -110,7 +105,7 @@ $('reg').onchange = (e) => {
   if (e.target.dataset.fu !== undefined) register[e.target.dataset.fu].followUp = e.target.value;
   persist(); renderRegister();
 };
-$('reset').onclick = () => { register = SAMPLE_REG.slice(); persist(); render(); };
+$('reset').onclick = () => { register = sampleRegister($('qdate').value || TODAY); persist(); render(); };
 $('print').onclick = () => window.print();
 $('csv').onclick = () => {
   const a = document.createElement('a');

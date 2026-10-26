@@ -128,7 +128,7 @@ test('missing paths return 404 with the styled page and working links, even when
     assert.match(await page.textContent('h1'), /doesn't exist/);
     assert.equal(await page.$eval('body', (b) => getComputedStyle(b).backgroundColor), 'rgb(246, 248, 251)', 'site CSS applied');
     const hrefs = await page.$$eval('main a', (as) => as.map((a) => a.href));
-    for (const p of ['quote.html', 'stock.html', 'renewals.html', 'recon.html', 'einvoice.html', 'index.html']) assert.ok(hrefs.includes(base + p), `${path}: links to ${p}`);
+    for (const p of ['quote.html', 'stock.html', 'renewals.html', 'recon.html', 'einvoice.html', 'tds.html', 'index.html']) assert.ok(hrefs.includes(base + p), `${path}: links to ${p}`);
     assert.deepEqual(external, []);
     await page.close();
   }
@@ -164,12 +164,32 @@ test('stock and renewals use the visitor\'s date and the sample story is unchang
 });
 
 test('no page-wide horizontal scroll at 320, 375, 768 and 1360 px (quote presets and every page)', { skip }, async () => {
-  const pages = ['index.html', 'quote.html', 'quote.html?type=steel', 'quote.html?type=export', 'quote.html?type=translation', 'recon.html', 'einvoice.html', 'stock.html', 'renewals.html', '404.html'];
+  const pages = ['index.html', 'quote.html', 'quote.html?type=steel', 'quote.html?type=export', 'quote.html?type=translation', 'recon.html', 'einvoice.html', 'stock.html', 'renewals.html', 'tds.html', '404.html'];
   for (const w of [320, 375, 768, 1360]) for (const p of pages) {
     const { page } = await open(p, w);
     await page.waitForLoadState('load'); await page.waitForTimeout(250);
     const sw = await page.evaluate(() => document.documentElement.scrollWidth);
     assert.ok(sw <= w, `${p} at ${w}px: page is ${sw}px wide`);
     await page.close();
+  }
+});
+
+test('quote page uses the visitor\'s date and the sample follow-up queue is unchanged on another day', { skip }, async () => {
+  const read = async (iso) => {
+    const page = await browser.newPage({ viewport: { width: 1360, height: 900 } });
+    await page.clock.setFixedTime(new Date(`${iso}T10:00:00`));
+    await page.goto(base + 'quote.html'); await page.waitForSelector('#doc table');
+    const r = await page.evaluate(() => ({ date: document.getElementById('qdate').value, kpis: document.getElementById('kpis').innerText, due: document.getElementById('due').innerText.replace(/Q\/\d{4}-\d{2}\//g, 'Q/FY/'), no: document.getElementById('doc').innerText.match(/Q\/\d{4}-\d{2}\/\d{4}/)[0] }));
+    await page.close();
+    return r;
+  };
+  const ref = await read('2026-10-26');
+  assert.equal(ref.no, 'Q/2026-27/0046');
+  for (const d of ['2027-03-15', '2028-02-29']) {
+    const r = await read(d);
+    assert.equal(r.date, d, 'quote date is the visitor\'s today');
+    assert.equal(r.kpis, ref.kpis, `same KPIs on ${d}`);
+    assert.equal(r.due, ref.due, `same follow-up queue on ${d}`);
+    assert.match(r.no, /\/0046$/, `next quote number on ${d}`);
   }
 });

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TDS Credit Check: 26AS/Form 168 vs Books</title>
+<meta name="description" content="Match your books' TDS receivable against Form 26AS or Form 168 Part I, find the credit at risk and get a follow-up note per deductor. Runs in your browser.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/tds.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">Mohmmadali <span>· GST &amp; Tax Software</span></a>
+  <nav><a href="index.html">Home</a><a href="recon.html" class="hide-sm">Reconciliation</a><a href="tds.html" class="active">TDS check</a><a href="einvoice.html" class="hide-sm">E-invoice</a><a href="quote.html" class="hide-sm">Quotes</a><a href="stock.html" class="hide-sm">Stock</a><a href="renewals.html" class="hide-sm">Renewals</a></nav>
+</div></header>
+<main class="wrap">
+  <div class="tool-head">
+    <h1>TDS credit check: 26AS / Form 168 vs books</h1>
+    <p>Match the TDS your customers deducted (as per your books) against Form 26AS or Form 168 Part I. See the credit at risk in ₹, deductor by deductor, with a ready follow-up note for each.</p>
+    <p class="cta-mini">Want it for your business? <b>Fixed price from ₹18,000</b> · 7-10 days · + ₹7,500/yr updates · <a href="#cta">How to get it built ↓</a></p>
+  </div>
+  <div class="privacy" id="privacy" style="margin:10px 0 16px">🔒 <div><b>Files never leave this tab.</b> Everything is read and matched locally with JavaScript; this page makes no network calls with your data and has no server. Only your party ↔ TAN map and settings can be saved, in this browser, and you can clear them any time. The bundled sample uses fictional deductors (TANs start with DEMO) and the example PAN ABCDE1234F.</div></div>
+
+  <ol class="tds-steps" aria-label="Steps">
+    <li><a href="#s-load">Load</a></li><li><a href="#s-map">Columns</a></li><li><a href="#s-stmt">Statement</a></li><li><a href="#s-party">Party ↔ TAN</a></li><li><a href="#s-rules">Rules</a></li><li><a href="#s-out">Results</a></li><li><a href="#s-fu">Follow-ups</a></li><li><a href="#s-sum">Client summary</a></li>
+  </ol>
+
+  <section class="panel" id="s-load" aria-labelledby="h-load">
+    <h2 id="h-load">1. Load files</h2>
+    <div class="grid g2">
+      <div>
+        <label for="fst">Form 26AS text (.txt) or Form 168 Part I as CSV. Several years at once is fine.</label>
+        <div class="drop" id="dst">No statement loaded</div>
+        <input type="file" id="fst" accept=".txt,.csv,text/plain,text/csv" multiple style="margin-top:6px">
+        <p class="note" style="margin:4px 0 0">26AS text: the caret (^) delimited file from TRACES (unzip and open it first; the password is your date of birth). Excel downloads: save the sheet as CSV.</p>
+      </div>
+      <div>
+        <label for="fbk">Books: TDS receivable / customer receipts (CSV)</label>
+        <div class="drop" id="dbk">No books file loaded</div>
+        <input type="file" id="fbk" accept=".csv,text/csv" style="margin-top:6px">
+        <div class="fields" style="margin-top:8px"><div><label for="preset">Export format</label><select id="preset"></select></div></div>
+      </div>
+      <div>
+        <label for="fpm">Optional: party ↔ TAN map (CSV: Party, TAN)</label>
+        <div class="drop" id="dpm">Not loaded (names are matched automatically)</div>
+        <input type="file" id="fpm" accept=".csv,text/csv" style="margin-top:6px">
+      </div>
+      <div>
+        <label for="fais">Optional: AIS TDS lines (CSV) for a third-way check</label>
+        <div class="drop" id="dais">Not loaded</div>
+        <input type="file" id="fais" accept=".csv,text/csv" style="margin-top:6px">
+      </div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="sample">Use sample data</button>
+      <button class="btn sm" id="clear">Clear all data</button>
+      <a class="btn sm" href="samples/tds/form26as_sample.txt" download>Sample 26AS text</a>
+      <a class="btn sm" href="samples/tds/form168_sample.csv" download>Sample Form 168 CSV</a>
+      <a class="btn sm" href="samples/tds/books_generic.csv" download>Sample books CSV</a>
+      <a class="btn sm" href="samples/tds/books_tally_style.csv" download>Tally-style books CSV</a>
+    </div>
+    <ul class="msgs" id="loadmsgs" style="margin-top:10px"></ul>
+  </section>
+
+  <section class="panel" id="s-map" aria-labelledby="h-map">
+    <h2 id="h-map">2. Column mapping</h2>
+    <p class="note" style="margin-top:-6px">Detected from your header row. Change any column if it is wrong; required fields are marked *. If the books file has no TDS column, map the customer's debit/TDS receivable column as "TDS amount".</p>
+    <div id="mapbooks" class="fields"></div>
+    <div id="mapstmt" class="fields" style="margin-top:12px"></div>
+    <ul class="msgs" id="mapmsgs" style="margin-top:10px"></ul>
+  </section>
+
+  <section class="panel" id="s-stmt" aria-labelledby="h-stmt">
+    <h2 id="h-stmt">3. Statement review</h2>
+    <div class="row" style="margin-bottom:8px"><label class="inline"><input type="checkbox" id="mask" checked> Mask PAN on screen and in exports</label></div>
+    <div id="stmthead" class="tds-meta"></div>
+    <div class="tbl-wrap"><table id="dtbl"></table></div>
+    <ul class="msgs" id="stmtmsgs" style="margin-top:10px"></ul>
+  </section>
+
+  <section class="panel" id="s-party" aria-labelledby="h-party">
+    <h2 id="h-party">4. Party ↔ TAN mapping</h2>
+    <p class="note" style="margin-top:-6px">Books name customers by party name; the statement names deductors by TAN. Confirm each pairing once and save it in this browser for next quarter.</p>
+    <div class="tbl-wrap"><table id="ptbl"></table></div>
+    <div class="row" style="margin-top:10px"><button class="btn sm" id="psave">Save map in this browser</button><button class="btn sm" id="pcsv">⬇ Map CSV</button><span class="note" id="pnote"></span></div>
+  </section>
+
+  <section class="panel" id="s-rules" aria-labelledby="h-rules">
+    <h2 id="h-rules">5. Matching rules</h2>
+    <div class="fields">
+      <div><label for="tv">Amount tolerance (₹)</label><input id="tv" type="number" step="0.01" min="0" value="1"></div>
+      <div><label for="td">Date tolerance (days)</label><input id="td" type="number" step="1" min="0" value="7"></div>
+      <div><label for="ns">Name match threshold</label><input id="ns" type="number" step="0.05" min="0.5" max="1" value="0.8"></div>
+      <div><label class="inline"><input type="checkbox" id="xq" checked> Cross-quarter timing</label><label class="inline"><input type="checkbox" id="ag" checked> Aggregate lines</label><label class="inline"><input type="checkbox" id="rc" checked> Rate check</label></div>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn primary" id="run" disabled>Check TDS credit</button><span class="note" id="status"></span></div>
+  </section>
+
+  <div id="out" hidden>
+    <section class="panel" id="s-out" aria-labelledby="h-out">
+      <h2 id="h-out">6. Results: TDS credit at risk</h2>
+      <div class="kpis" id="kpis"></div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn sm" id="xls">⬇ Excel workbook (5 sheets)</button>
+        <button class="btn sm" id="csv">⬇ Results CSV</button>
+        <button class="btn sm" id="fcsv">⬇ Follow-ups CSV</button>
+      </div>
+      <div class="tabs" id="tabs" style="margin-top:14px"></div>
+      <div class="tbl-wrap"><table id="tbl"></table></div>
+      <p class="note" id="aisnote"></p>
+    </section>
+    <section class="panel" id="s-fu" aria-labelledby="h-fu">
+      <h2 id="h-fu">7. Deductor follow-ups</h2>
+      <p class="note" style="margin-top:-6px">One note per deductor, sorted by ₹ at risk. Copy it into your own email; this page never sends anything.</p>
+      <div id="fu" class="tds-fu"></div>
+    </section>
+    <section class="panel" id="s-sum" aria-labelledby="h-sum">
+      <h2 id="h-sum">8. Client summary</h2>
+      <div class="row" style="margin:-4px 0 10px"><button class="btn sm" id="print">🖨 Print / save as PDF</button></div>
+      <div class="doc tds-sum" id="sum"></div>
+    </section>
+  </div>
+  <p class="note">This demo shows the approach. Section and payment-code mapping (old 194-series to section 393) is a versioned table; only 194C and 194J(b) are confirmed against a public source, the rest are marked as assumptions. Not tax advice; Form 168 column layout is not yet published, so the CSV route is header-driven.</p>
+  <aside class="cta" id="cta" aria-labelledby="cta-h">
+    <div>
+      <h2 id="cta-h">Want this for your business?</h2>
+      <p>This engine adapted to your clients' books exports (Tally, Zoho, Busy or Excel) and your Excel output, tested against 10 of your own anonymised cases. Fixed quote paid in 2 milestones; source, README and tests handed over.</p>
+      <p class="cta-how"><b>Reply to the email that brought you here</b> with two lines about your workflow and a sample file with dummy data. You get a written fixed quote before any work starts. <a class="more" href="index.html#services">See all packages</a></p>
+    </div>
+    <div class="cta-price"><span class="note">TDS credit check · per-firm tool</span><span class="amt"><small>from</small> ₹18,000 <small>/ $215</small></span><span class="time">7-10 days · fixed price</span><span class="alt">+ ₹7,500 / $90 per year for 393-table and format updates</span></div>
+  </aside>
+</main>
+<footer><div class="wrap">Runs 100% in your browser · Synthetic sample data · Not affiliated with the Income Tax Department, TRACES or the Government of India · <a href="index.html">Back to services</a></div></footer>
+<script type="module" src="js/tds-ui.js"></script>
+</body>
+</html>

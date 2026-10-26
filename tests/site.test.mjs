@@ -9,6 +9,7 @@ const profile = JSON.parse(read('profile.json'));
 const DEMOS = ['quote.html', 'stock.html', 'renewals.html', 'recon.html', 'einvoice.html'];
 const pkgA = profile.services.find((s) => s.id === 'A');
 const qt = Object.fromEntries(profile.quick_tools.map((q) => [q.demo, q]));
+const ct = Object.fromEntries(profile.compliance_tools.map((q) => [q.demo, q]));
 // Expected CTA price per demo: quick tools from profile.json quick_tools, GST demos from package A.
 const expected = {
   'quote.html': { amt: qt['quote.html'].from, usd: qt['quote.html'].usd, time: qt['quote.html'].timeline },
@@ -16,6 +17,7 @@ const expected = {
   'renewals.html': { amt: qt['renewals.html'].from, usd: qt['renewals.html'].usd, time: qt['renewals.html'].timeline },
   'recon.html': { amt: pkgA.price, usd: pkgA.price_usd, time: pkgA.timeline },
   'einvoice.html': { amt: pkgA.price, usd: pkgA.price_usd, time: pkgA.timeline },
+  'tds.html': { amt: ct['tds.html'].from, usd: ct['tds.html'].usd, time: ct['tds.html'].timeline },
 };
 const ctaOf = (html) => { const m = html.match(/<aside class="cta" id="cta"[\s\S]*?<\/aside>/g); return m || []; };
 
@@ -32,12 +34,15 @@ test('every demo page has exactly one CTA box with the shared heading, reply lin
 });
 
 test('CTA prices and timelines match profile.json (single source used on the landing page)', () => {
-  for (const f of DEMOS) {
+  for (const f of Object.keys(expected)) {
     const box = ctaOf(read(f))[0], e = expected[f];
     assert.ok(box.includes(`<small>from</small> ${e.amt} <small>/ ${e.usd}</small>`), `${f}: price ${e.amt} / ${e.usd}`);
     assert.ok(box.includes(`${e.time} · fixed price`), `${f}: timeline ${e.time}`);
     assert.ok(read(f).includes(`Fixed price from ${e.amt}</b> · ${e.time}`), `${f}: intro line matches`);
   }
+  const t = ct['tds.html'], tds = ctaOf(read('tds.html'))[0];
+  assert.ok(tds.includes(`+ ${t.annual.replace('/yr', '')} / ${t.annual_usd.replace('/yr', '')} per year`), 'tds: yearly fee matches profile.json');
+  assert.ok(read('tds.html').includes(`+ ${t.annual} updates`), 'tds: intro line shows the yearly fee');
   const b = profile.services.find((s) => s.id === 'B');
   assert.ok(ctaOf(read('einvoice.html'))[0].includes(`${b.price} / ${b.price_usd}, ${b.timeline} (Package B)`), 'einvoice: live IRN option matches package B');
 });
@@ -54,7 +59,7 @@ test('404 page exists, uses site styling and links to the home page and every de
   assert.match(html, /<link rel="stylesheet" href="css\/style.css">/);
   assert.match(html, /<meta name="robots" content="noindex">/);
   assert.match(html, /<base href=/, 'resolves links from the site root at any depth');
-  for (const p of ['index.html', ...DEMOS]) assert.ok(html.includes(`href="${p}"`), `404 links to ${p}`);
+  for (const p of ['index.html', ...DEMOS, 'tds.html']) assert.ok(html.includes(`href="${p}"`), `404 links to ${p}`);
   assert.doesNotMatch(html, /@[a-z0-9-]+\.[a-z]|github\.com|mailto:/i);
 });
 

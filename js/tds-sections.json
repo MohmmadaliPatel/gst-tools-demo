@@ -1,0 +1,16 @@
+{
+  "version": "2026.10-demo.1",
+  "updated": "2026-10-26",
+  "note": "Section equivalence and rate table for the TDS credit check. Only rows with confirmed=true were checked against an official or cited source; every other row is an ASSUMPTION to be re-checked against the official section 393 Table before a client build. 4-digit payment codes are accepted as optional aliases only, because sources disagree on whether they are notified.",
+  "entries": [
+    { "id": "194C", "family": "C", "label": "Payments to contractors", "old": ["194C"], "new": ["393(1) Sl. 6(i)", "393(1) Sl. 6(i).D(a)", "393(1) Sl. 6(i).D(b)"], "payment_codes": ["1023", "1024"], "rates_pct": [1, 2], "confirmed": true, "source": "Income Tax Dept e-filing help, Tax Payments FAQ Q5 (194C to section 393(1) Table Sl. No. 6(i)); spec sources HOURSLIP, TERRA-393. Rates 1% individual/HUF, 2% others." },
+    { "id": "194J(b)", "family": "J", "label": "Fees for professional services", "old": ["194J(b)", "194JB"], "new": ["393(1) Sl. 6(iii).D(b)"], "payment_codes": ["1027", "1028"], "rates_pct": [10], "confirmed": true, "source": "Spec sources HOURSLIP, TERRA-393 (194J(b) to 393(1) Sl. 6(iii).D(b)); 10% rate per TDS393." },
+    { "id": "194J(a)", "family": "J", "label": "Fees for technical services, call centre, film royalty", "old": ["194J(a)", "194JA"], "new": ["393(1) Sl. 6(iii).D(a)"], "payment_codes": ["1026"], "rates_pct": [2], "confirmed": false, "source": "ASSUMPTION from a secondary article listing payment codes 1001-1067 (not an official notification)." },
+    { "id": "194J", "family": "J", "label": "Fees for professional or technical services (sub-clause not stated)", "old": ["194J"], "new": ["393(1) Sl. 6(iii)"], "payment_codes": [], "rates_pct": [2, 10], "confirmed": false, "source": "ASSUMPTION: family-level row so a bare 194J or 6(iii) still matches either sub-clause." },
+    { "id": "194H", "family": "H", "label": "Commission or brokerage", "old": ["194H"], "new": ["393(1) Sl. 1(ii)"], "payment_codes": ["1006"], "rates_pct": [2], "confirmed": false, "source": "ASSUMPTION from a secondary article (not an official notification)." },
+    { "id": "194I(a)", "family": "I", "label": "Rent: plant, machinery, equipment", "old": ["194I(a)", "194IA_RENT"], "new": ["393(1) Sl. 2(ii).D(a)"], "payment_codes": ["1008"], "rates_pct": [2], "confirmed": false, "source": "ASSUMPTION from a secondary article (not an official notification)." },
+    { "id": "194I(b)", "family": "I", "label": "Rent: land, building, furniture", "old": ["194I(b)", "194IB_RENT"], "new": ["393(1) Sl. 2(ii).D(b)"], "payment_codes": ["1009"], "rates_pct": [10], "confirmed": false, "source": "ASSUMPTION from a secondary article (not an official notification)." },
+    { "id": "194A", "family": "A", "label": "Interest other than on securities", "old": ["194A"], "new": ["393(1) Sl. 5(iii)"], "payment_codes": ["1022"], "rates_pct": [10], "confirmed": false, "source": "ASSUMPTION from a secondary article (not an official notification)." },
+    { "id": "194Q", "family": "Q", "label": "Purchase of goods", "old": ["194Q"], "new": ["393(1) Sl. 8(ii)"], "payment_codes": ["1031"], "rates_pct": [0.1], "confirmed": false, "source": "ASSUMPTION from a secondary article (not an official notification)." }
+  ]
+}

@@ -160,5 +160,18 @@
       "demo": "renewals.html",
       "desc": "Reads your member or student sheet and lists who has expired, who is due this week, who is low on classes and who owes fees, with personalised reminder messages ready to copy."
     }
+  ],
+  "compliance_tools": [
+    {
+      "id": "T1",
+      "name": "TDS credit check: 26AS / Form 168 vs books",
+      "from": "₹18,000",
+      "usd": "$215",
+      "annual": "₹7,500/yr",
+      "annual_usd": "$90/yr",
+      "timeline": "7-10 days",
+      "demo": "tds.html",
+      "desc": "Form 26AS or Form 168 Part I against your clients' books TDS receivable: matched by TAN, quarter, section and amount, with credit at risk per deductor, follow-up notes and an Excel export. The yearly fee covers section-393 table and format updates."
+    }
   ]
 }

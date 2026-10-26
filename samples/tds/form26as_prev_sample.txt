@@ -1,0 +1,33 @@
+^Form 26AS^
+File Creation Date^Permanent Account Number (PAN)^Current Status of PAN^Financial Year^Assessment Year^Name of Assessee^Address Line 1^Address Line 2^Address Line 3^Address Line 4^Address Line 5^Statecode^Pin Code
+26-10-2026^ABCDE1234F^Active^2025-2026^2026-2027^DEMO DESIGN STUDIO LLP^DEMO ADDRESS LINE 1^SAMPLE AREA^^^^27^400001
+^PART-I - Details of Tax Deducted at Source^
+Sr. No.^Name of Deductor^TAN of Deductor^^^^^Total Amount Paid / Credited(Rs.)^Total Tax Deducted(Rs.)^Total TDS Deposited(Rs.)
+1^SAMPLE RETAIL PVT LTD^DEMO00001A^^^^^180000.00^18000.00^18000.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^194JB^13-Jan-2026^F^04-Mar-2026^-^75000.00^7500.00^7500.00^
+^2^194JB^21-Feb-2026^F^12-Apr-2026^-^105000.00^10500.00^10500.00^
+2^EXAMPLE HOSPITALS LLP^DEMO00002B^^^^^32500.00^3250.00^3250.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^194JB^23-Jan-2026^F^14-Mar-2026^-^32500.00^3250.00^3250.00^
+3^DEMO INFRA PROJECTS LIMITED^DEMO00003C^^^^^272500.00^5450.00^5450.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^194C^09-Feb-2026^F^31-Mar-2026^-^272500.00^5450.00^5450.00^
+4^FICTIONAL FOODS LTD^DEMO00005E^^^^^52500.00^5250.00^5250.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^194JB^02-Mar-2026^F^21-Apr-2026^-^52500.00^5250.00^5250.00^
+5^MOCK LOGISTICS LLP^DEMO00006F^^^^^70000.00^1400.00^1400.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^194C^27-Feb-2026^F^18-Apr-2026^-^70000.00^1400.00^1400.00^
+6^IMAGINARY SOFTWARE PVT LTD^DEMO00008H^^^^^65000.00^6500.00^6500.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^194JB^10-Mar-2026^F^29-Apr-2026^-^65000.00^6500.00^6500.00^
+7^SPECIMEN PHARMA LTD^DEMO00009I^^^^^37500.00^3750.00^3750.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^194JB^29-Jan-2026^F^20-Mar-2026^-^37500.00^3750.00^3750.00^
+^PART-II - Details of Tax Deducted at Source for 15G / 15H^
+^No Transactions Present^
+^PART-VI - Details of Tax Collected at Source^
+^No Transactions Present^
+^PART-X - TDS / TCS Defaults* (Processing of Statements)^
+^No Transactions Present^

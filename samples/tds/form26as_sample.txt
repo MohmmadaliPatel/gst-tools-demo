@@ -1,0 +1,78 @@
+^Form 26AS^
+File Creation Date^Permanent Account Number (PAN)^Current Status of PAN^Tax Year^Name of Assessee^Address Line 1^Address Line 2^Address Line 3^Address Line 4^Address Line 5^Statecode^Pin Code
+26-10-2026^ABCDE1234F^Active^2026-27^DEMO DESIGN STUDIO LLP^DEMO ADDRESS LINE 1^SAMPLE AREA^^^^27^400001
+^PART-I - Details of Tax Deducted at Source^
+Sr. No.^Name of Deductor^TAN of Deductor^^^^^Total Amount Paid / Credited(Rs.)^Total Tax Deducted(Rs.)^Total TDS Deposited(Rs.)
+1^SAMPLE RETAIL PVT LTD^DEMO00001A^^^^^587500.00^51950.00^51950.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(iii).D(b)^19-Apr-2026^F^08-Jun-2026^-^67500.00^6750.00^6750.00^
+^2^393(1) Sl. 6(iii).D(b)^20-May-2026^F^09-Jul-2026^-^90000.00^9000.00^9000.00^
+^3^393(1) Sl. 6(iii).D(b)^29-Jun-2026^F^18-Aug-2026^-^85000.00^1700.00^1700.00^
+^4^393(1) Sl. 6(iii).D(b)^09-Jul-2026^F^28-Aug-2026^-^40000.00^4000.00^4000.00^
+^5^393(1) Sl. 6(iii).D(b)^30-Aug-2026^F^19-Oct-2026^-^120000.00^12000.00^12000.00^
+^6^393(1) Sl. 6(iii).D(b)^18-Sep-2026^F^07-Nov-2026^-^42500.00^4250.00^4250.00^
+^7^393(1) Sl. 6(iii).D(b)^19-Sep-2026^F^08-Nov-2026^-^142500.00^14250.00^14250.00^
+2^EXAMPLE HOSPITALS LLP^DEMO00002B^^^^^847500.00^84750.00^84750.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(iii).D(b)^10-Apr-2026^F^30-May-2026^-^50000.00^5000.00^5000.00^
+^2^393(1) Sl. 6(iii).D(b)^18-Jun-2026^F^07-Aug-2026^-^70000.00^7000.00^7000.00^
+^3^393(1) Sl. 6(iii).D(b)^31-Jul-2026^F^19-Sep-2026^-^335000.00^33500.00^33500.00^
+^4^393(1) Sl. 6(iii).D(b)^31-Aug-2026^F^20-Oct-2026^-^392500.00^39250.00^39250.00^
+3^DEMO INFRA PROJECTS LIMITED^DEMO00003C^^^^^792500.00^15850.00^13750.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(i)^02-May-2026^F^21-Jun-2026^-^265000.00^5300.00^5300.00^
+^2^393(1) Sl. 6(i)^21-May-2026^F^10-Jul-2026^-^200000.00^4000.00^4000.00^
+^3^393(1) Sl. 6(i)^26-Jul-2026^F^14-Sep-2026^-^147500.00^2950.00^2950.00^
+^4^393(1) Sl. 6(i)^13-Aug-2026^U^-^-^105000.00^2100.00^0.00^
+^5^393(1) Sl. 6(i)^02-Sep-2026^F^22-Oct-2026^-^75000.00^1500.00^1500.00^
+4^PLACEHOLDER MEDIA PVT LTD^DEMO00004D^^^^^172500.00^17250.00^17250.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(iii).D(b)^20-Apr-2026^F^09-Jun-2026^-^57500.00^5750.00^5750.00^
+^2^393(1) Sl. 6(iii).D(b)^06-Jun-2026^F^26-Jul-2026^-^115000.00^11500.00^11500.00^
+5^FICTIONAL FOODS LTD^DEMO00005E^^^^^407500.00^40750.00^40750.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(iii).D(b)^11-May-2026^F^30-Jun-2026^-^147500.00^14750.00^14750.00^
+^2^393(1) Sl. 6(iii).D(b)^20-Jun-2026^U^-^-^145000.00^14500.00^14500.00^
+^3^393(1) Sl. 6(iii).D(b)^01-Aug-2026^F^20-Sep-2026^-^100000.00^10000.00^10000.00^
+^4^393(1) Sl. 6(iii).D(b)^24-Aug-2026^F^13-Oct-2026^-^15000.00^1500.00^1500.00^
+6^MOCK LOGISTICS LLP^DEMO00006F^^^^^1762500.00^35250.00^35250.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(i)^31-May-2026^F^20-Jul-2026^-^600000.00^12000.00^12000.00^
+^2^393(1) Sl. 6(i)^30-Jun-2026^F^19-Aug-2026^-^735000.00^14700.00^14700.00^
+^3^393(1) Sl. 6(i)^18-Jul-2026^F^06-Sep-2026^-^107500.00^2150.00^2150.00^
+^4^393(1) Sl. 6(i)^10-Sep-2026^F^30-Oct-2026^-^320000.00^6400.00^6400.00^
+7^TEST EDUCATION TRUST^DEMO00007G^^^^^332500.00^33250.00^33250.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^194J^02-Apr-2026^F^22-May-2026^-^60000.00^6000.00^6000.00^
+^2^194J^21-Apr-2026^F^10-Jun-2026^-^45000.00^4500.00^4500.00^
+^3^393(1) Sl. 6(iii).D(b)^13-May-2026^F^02-Jul-2026^-^80000.00^8000.00^8000.00^
+^4^393(1) Sl. 6(iii).D(b)^14-Aug-2026^F^03-Oct-2026^-^147500.00^14750.00^14750.00^
+8^IMAGINARY SOFTWARE PVT LTD^DEMO00008H^^^^^750000.00^75000.00^75000.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(iii).D(b)^26-Apr-2026^F^15-Jun-2026^-^132500.00^13250.00^13250.00^
+^2^393(1) Sl. 1(ii)^12-Jun-2026^F^01-Aug-2026^-^95000.00^9500.00^9500.00^
+^3^393(1) Sl. 6(iii).D(b)^06-Aug-2026^F^25-Sep-2026^-^95000.00^9500.00^9500.00^
+^4^393(1) Sl. 6(iii).D(b)^30-Sep-2026^F^19-Nov-2026^-^427500.00^42750.00^42750.00^
+9^SPECIMEN PHARMA LTD^DEMO00009I^^^^^417500.00^41750.00^41750.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(iii).D(b)^14-May-2026^F^03-Jul-2026^-^62500.00^6250.00^6250.00^
+^2^393(1) Sl. 6(iii).D(b)^14-Jun-2026^F^03-Aug-2026^-^82500.00^8250.00^8250.00^
+^3^393(1) Sl. 6(iii).D(b)^19-Jul-2026^F^07-Sep-2026^-^117500.00^11750.00^11750.00^
+^4^393(1) Sl. 6(iii).D(b)^24-Aug-2026^F^13-Oct-2026^-^155000.00^15500.00^15500.00^
+10^SAMPLE CIVIC AUTHORITY^DEMO00010J^^^^^185000.00^18500.00^18500.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(iii).D(b)^31-May-2026^F^20-Jul-2026^-^105000.00^10500.00^10500.00^
+^2^393(1) Sl. 6(iii).D(b)^31-Aug-2026^P^20-Oct-2026^-^80000.00^8000.00^8000.00^
+11^EXAMPLE REALTY PVT LTD^DEMO00011K^^^^^277500.00^5550.00^5550.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(i)^29-Apr-2026^F^18-Jun-2026^-^170000.00^3400.00^3400.00^
+^2^393(1) Sl. 6(i)^23-Jun-2026^F^12-Aug-2026^-^107500.00^2150.00^2150.00^
+12^EXAMPLE REALTY DEVELOPERS PVT LTD^DEMO00012L^^^^^240000.00^4800.00^4800.00^
+^Sr. No.^Section^Transaction Date^Status of Booking^Date of Booking^Remarks^Amount Paid / Credited(Rs.)^Tax Deducted(Rs.)^TDS Deposited(Rs.)
+^1^393(1) Sl. 6(i)^14-Aug-2026^F^03-Oct-2026^-^240000.00^4800.00^4800.00^
+^PART-II - Details of Tax Deducted at Source for 15G / 15H^
+^No Transactions Present^
+^PART-VI - Details of Tax Collected at Source^
+^No Transactions Present^
+^PART-X - TDS / TCS Defaults* (Processing of Statements)^
+^No Transactions Present^

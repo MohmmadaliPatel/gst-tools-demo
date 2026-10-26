@@ -1,0 +1,31 @@
+/* TDS credit check page only (additive; shared look comes from style.css) */
+.tds-steps{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-wrap:wrap;gap:6px;counter-reset:s}
+.tds-steps li{counter-increment:s}
+.tds-steps a{display:inline-block;font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted)}
+.tds-steps a::before{content:counter(s) ". ";font-weight:600}
+label.inline{display:flex;align-items:center;gap:6px;font-weight:600}label.inline input{width:auto}
+.tds-meta{display:grid;gap:10px;margin:0 0 12px;font-size:13.5px}
+.tds-file{display:grid;gap:6px 16px;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.tds-meta div b{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.p-Short-in-AS,.p-Missing-in-AS{background:var(--bad-bg);color:var(--bad)}
+.p-Matched-aggregate-{background:var(--ok-bg);color:var(--ok)}
+.p-Not-final-U-P-O-,.p-Possible-wrong-TAN,.p-Section-mismatch{background:var(--warn-bg);color:var(--warn)}
+.p-Only-in-AS,.p-Excess-in-AS,.p-Timing{background:var(--info-bg);color:var(--info)}
+.p-Duplicate-in-books{background:#eef2f7;color:#34465c}
+.flag{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 6px;border-radius:6px;background:var(--warn-bg);color:var(--warn);margin:2px 4px 0 0}
+.tds-fu{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr))}
+.tds-fu article{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff;min-width:0}
+.tds-fu h3{margin:0;font-size:15px}.tds-fu .amt{font-weight:700;color:var(--bad)}
+.tds-fu textarea{height:220px;margin:8px 0;white-space:pre-wrap}
+.map-sel{min-width:150px}
+#ptbl input{min-width:120px;padding:5px 8px}
+.tds-sum h3{margin:0 0 4px}.tds-sum .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:6px 18px;margin:10px 0}
+.tds-sum .kv div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:3px 0}
+.tds-sum table th,.tds-sum table td{white-space:nowrap;overflow-wrap:normal}
+.tds-sum .big{color:var(--bad);font-weight:700}
+@media print{
+  header.top,footer,.privacy,.tds-steps,#s-load,#s-map,#s-stmt,#s-party,#s-rules,#s-out,#s-fu,main>p.note,.tool-head,#print{display:none!important}
+  #out{display:block!important}#s-sum{border:0;box-shadow:none;padding:0}#s-sum>h2{display:none}
+  .tds-sum{border:0;padding:0;font-size:12px}.tds-sum table td,.tds-sum table th{white-space:normal}.tds-sum .tbl-wrap{overflow:visible;max-height:none;border:0}
+  body{background:#fff}
+}
