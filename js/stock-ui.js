@@ -9,15 +9,19 @@ const setDrop = (id, ok, msg) => { $(id).textContent = msg; $(id).classList.togg
 function loadM(t, n) { try { master = normalizeMaster(parseCsv(t)); setDrop('dm', true, `✓ ${n}: ${master.length} SKUs`); } catch (e) { master = null; setDrop('dm', false, `✗ ${e.message}`); } }
 function loadV(t, n) { try { moves = normalizeMoves(parseCsv(t)); setDrop('dv', true, `✓ ${n}: ${moves.length} movements`); } catch (e) { moves = null; setDrop('dv', false, `✗ ${e.message}`); } }
 function loadC(t, n) { try { channel = parseCsv(t); setDrop('dc', true, `✓ ${n}: ${channel.length} listings`); } catch (e) { channel = []; setDrop('dc', false, `✗ ${e.message}`); } }
-const file = (id, fn) => { $(id).onchange = async (e) => { const f = e.target.files[0]; if (f) { fn(await f.text(), f.name); run(); } }; };
+let userData = false; // set once the visitor loads their own file; auto-load never overwrites it
+const file = (id, fn) => { $(id).onchange = async (e) => { const f = e.target.files[0]; if (f) { userData = true; fn(await f.text(), f.name); run(); } }; };
 file('fm', loadM); file('fv', loadV); file('fc', loadC);
-$('sample').onclick = async () => {
+async function loadSample(auto = false) {
   const get = async (p) => (await fetch(p)).text();
-  loadM(await get('samples/stock_master.csv'), 'stock_master.csv');
-  loadV(await get('samples/stock_movements.csv'), 'stock_movements.csv');
-  loadC(await get('samples/shopify_inventory.csv'), 'shopify_inventory.csv');
+  const [m, v, c] = await Promise.all([get('samples/stock_master.csv'), get('samples/stock_movements.csv'), get('samples/shopify_inventory.csv')]);
+  if (auto && userData) return;
+  loadM(m, 'stock_master.csv (sample)');
+  loadV(v, 'stock_movements.csv (sample)');
+  loadC(c, 'shopify_inventory.csv (sample)');
   run();
-};
+}
+$('sample').onclick = () => loadSample();
 $('asof').onchange = run;
 
 function run() {
@@ -66,3 +70,6 @@ $('xls').onclick = () => dl(toExcelXml([
   { name: 'Reorder', rows: stock.filter((s) => s.status !== 'OK'), columns: COLS },
   { name: 'Channel mismatches', rows: rec, columns: ['sku', 'channel', 'listed', 'available', 'diff', 'status', 'note'] },
 ]), `daily_stock_${$('asof').value}.xls`, 'application/vnd.ms-excel');
+
+// Show results straight away with the bundled sample, unless the visitor already loaded a file or opened ?sample=0.
+if (new URLSearchParams(location.search).get('sample') !== '0') loadSample(true).catch(() => {});

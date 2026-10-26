@@ -19,13 +19,17 @@ function loadBooks(text, name) {
   catch (e) { books = null; setDrop('dbk', false, `✗ ${e.message}`); }
   ready();
 }
-$('f2b').onchange = async (e) => { const f = e.target.files[0]; if (f) load2b(await f.text(), f.name); };
-$('fbk').onchange = async (e) => { const f = e.target.files[0]; if (f) loadBooks(await f.text(), f.name); };
-$('sample').onclick = async () => {
-  load2b(await (await fetch('samples/gstr2b_sample.json')).text(), 'gstr2b_sample.json');
-  loadBooks(await (await fetch('samples/purchase_register.csv')).text(), 'purchase_register.csv');
+let userData = false; // set once the visitor loads their own file; auto-load never overwrites it
+$('f2b').onchange = async (e) => { const f = e.target.files[0]; if (f) { userData = true; load2b(await f.text(), f.name); } };
+$('fbk').onchange = async (e) => { const f = e.target.files[0]; if (f) { userData = true; loadBooks(await f.text(), f.name); } };
+async function loadSample(auto = false) {
+  const [a, b] = await Promise.all([fetch('samples/gstr2b_sample.json'), fetch('samples/purchase_register.csv')].map((p) => p.then((r) => r.text())));
+  if (auto && userData) return;
+  load2b(a, 'gstr2b_sample.json (sample)');
+  loadBooks(b, 'purchase_register.csv (sample)');
   run();
-};
+}
+$('sample').onclick = () => loadSample();
 
 function run() {
   const opt = { valueTolerance: +$('tv').value || 0, taxTolerance: +$('tt').value || 0, dateToleranceDays: +$('td').value || 0, minInvoiceSimilarity: +$('sim').value || 0.75, fuzzyInvoice: $('fz').checked, crossGstin: $('xg').checked };
@@ -87,3 +91,6 @@ $('vcsv').onclick = () => download('vendor_follow_up.csv', toCsv(vendorRows()), 
 $('xls').onclick = () => download('gstr2b_reconciliation.xls', toExcelXml([
   { name: 'Summary', rows: summaryRows() }, { name: 'Results', rows: resultsToRows(out.results) }, { name: 'Vendor follow-up', rows: vendorRows() },
 ]), 'application/vnd.ms-excel');
+
+// Show results straight away with the bundled sample, unless the visitor already loaded a file or opened ?sample=0.
+if (new URLSearchParams(location.search).get('sample') !== '0') loadSample(true).catch(() => {});

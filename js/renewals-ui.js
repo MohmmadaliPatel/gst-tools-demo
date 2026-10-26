@@ -11,8 +11,14 @@ function load(text, name) {
   catch (e) { members = null; $('dm').textContent = `✗ ${e.message}`; $('dm').classList.remove('ok'); }
   run();
 }
-$('fm').onchange = async (e) => { const f = e.target.files[0]; if (f) load(await f.text(), f.name); };
-$('sample').onclick = async () => load(await (await fetch('samples/members.csv')).text(), 'members.csv');
+let userData = false; // set once the visitor loads their own file; auto-load never overwrites it
+$('fm').onchange = async (e) => { const f = e.target.files[0]; if (f) { userData = true; load(await f.text(), f.name); } };
+async function loadSample(auto = false) {
+  const t = await (await fetch('samples/members.csv')).text();
+  if (auto && userData) return;
+  load(t, 'members.csv (sample)');
+}
+$('sample').onclick = () => loadSample();
 ['today', 'due', 'low', 'biz'].forEach((id) => { $(id).oninput = run; });
 
 const msg = (r) => (r.status === 'Active' ? '' : fillTemplate(tpls[r.status], r, $('biz').value));
@@ -52,3 +58,6 @@ $('csv').onclick = () => {
   const rows = board.filter((r) => r.status !== 'Active').map((r) => ({ name: r.name, plan: r.plan, expiry: r.expiry, days_left: r.daysLeft, sessions_left: r.left, fee_pending: r.pending, flags: r.flags.join(' '), message: msg(r) }));
   const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([toCsv(rows)], { type: 'text/csv' })); a.download = `reminders_${$('today').value}.csv`; a.click();
 };
+
+// Show results straight away with the bundled sample, unless the visitor already loaded a file or opened ?sample=0.
+if (new URLSearchParams(location.search).get('sample') !== '0') loadSample(true).catch(() => {});
