@@ -1,5 +1,6 @@
 import { normalizeMembers, buildBoard, fillTemplate, DEFAULT_TEMPLATES, renewalPipeline } from './renewals.js';
 import { parseCsv, toCsv } from './csv.js';
+import { localToday, sampleOffset, shiftSampleText } from './sample-dates.js';
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]));
@@ -16,9 +17,11 @@ $('fm').onchange = async (e) => { const f = e.target.files[0]; if (f) { userData
 async function loadSample(auto = false) {
   const t = await (await fetch('samples/members.csv')).text();
   if (auto && userData) return;
-  load(t, 'members.csv (sample)');
+  // Sample expiry dates are relative to "Today", so the same people are expired / due this week on any day.
+  load(shiftSampleText(t, sampleOffset($('today').value || localToday())), 'members.csv (sample)');
 }
 $('sample').onclick = () => loadSample();
+$('today').value = localToday(); // the visitor's own date (the HTML value is only a no-JS fallback)
 ['today', 'due', 'low', 'biz'].forEach((id) => { $(id).oninput = run; });
 
 const msg = (r) => (r.status === 'Active' ? '' : fillTemplate(tpls[r.status], r, $('biz').value));

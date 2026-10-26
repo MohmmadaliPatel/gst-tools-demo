@@ -140,3 +140,36 @@ test('every existing URL still returns 200', { skip }, async () => {
     'samples/stock_master.csv', 'samples/stock_movements.csv', 'samples/shopify_inventory.csv', 'samples/members.csv'];
   for (const u of urls) { const r = await fetch(base + u); assert.equal(r.status, 200, u); }
 });
+
+// The browser clock is mocked, so these runs are deterministic. They prove the pages follow the visitor's date.
+async function kpisOn(path, iso) {
+  const page = await browser.newPage({ viewport: { width: 1360, height: 900 } });
+  await page.clock.setFixedTime(new Date(`${iso}T10:00:00`));
+  await page.goto(base + path); await page.waitForSelector('#tbl tr td', { timeout: 5000 });
+  const r = await page.evaluate(() => ({ today: (document.getElementById('today') || document.getElementById('asof')).value, kpis: document.getElementById('kpis').innerText, tabs: document.getElementById('tabs').innerText }));
+  await page.close();
+  return r;
+}
+
+test('stock and renewals use the visitor\'s date and the sample story is unchanged on another day', { skip }, async () => {
+  for (const p of ['stock.html', 'renewals.html']) {
+    const ref = await kpisOn(p, '2026-10-26');
+    for (const d of ['2027-03-15', '2028-02-29']) {
+      const r = await kpisOn(p, d);
+      assert.equal(r.today, d, `${p}: date field shows the visitor's today`);
+      assert.equal(r.kpis.replaceAll(d, 'TODAY'), ref.kpis.replaceAll('2026-10-26', 'TODAY'), `${p}: same KPIs on ${d}`);
+      assert.equal(r.tabs, ref.tabs, `${p}: same tab counts on ${d}`);
+    }
+  }
+});
+
+test('no page-wide horizontal scroll at 320, 375, 768 and 1360 px (quote presets and every page)', { skip }, async () => {
+  const pages = ['index.html', 'quote.html', 'quote.html?type=steel', 'quote.html?type=export', 'quote.html?type=translation', 'recon.html', 'einvoice.html', 'stock.html', 'renewals.html', '404.html'];
+  for (const w of [320, 375, 768, 1360]) for (const p of pages) {
+    const { page } = await open(p, w);
+    await page.waitForLoadState('load'); await page.waitForTimeout(250);
+    const sw = await page.evaluate(() => document.documentElement.scrollWidth);
+    assert.ok(sw <= w, `${p} at ${w}px: page is ${sw}px wide`);
+    await page.close();
+  }
+});

@@ -1,5 +1,6 @@
 import { normalizeMaster, normalizeMoves, computeStock, reconcileChannels, sizeColourMatrix, daySummary } from './stock.js';
 import { parseCsv, toCsv, toExcelXml } from './csv.js';
+import { localToday, sampleOffset, shiftSampleText } from './sample-dates.js';
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[<>&"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]));
@@ -16,12 +17,15 @@ async function loadSample(auto = false) {
   const get = async (p) => (await fetch(p)).text();
   const [m, v, c] = await Promise.all([get('samples/stock_master.csv'), get('samples/stock_movements.csv'), get('samples/shopify_inventory.csv')]);
   if (auto && userData) return;
+  // Sample movements are dated relative to the "As of" date, so today's dispatches show up as today on any day.
+  const shift = sampleOffset($('asof').value || localToday());
   loadM(m, 'stock_master.csv (sample)');
-  loadV(v, 'stock_movements.csv (sample)');
+  loadV(shiftSampleText(v, shift), 'stock_movements.csv (sample)');
   loadC(c, 'shopify_inventory.csv (sample)');
   run();
 }
 $('sample').onclick = () => loadSample();
+$('asof').value = localToday(); // the visitor's own date (the HTML value is only a no-JS fallback)
 $('asof').onchange = run;
 
 function run() {
